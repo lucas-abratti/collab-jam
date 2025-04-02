@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clwxeycewuht2"]
+
+[ext_resource type="Script" uid="uid://ctndt6vm8hfor" path="res://Components/target_follow_component.gd" id="1_nwpt0"]
+[ext_resource type="PackedScene" uid="uid://clugqmvrgjo51" path="res://Components/target_component.tscn" id="2_lu8tk"]
+
+[node name="TargetFollowComponent" type="Node3D" node_paths=PackedStringArray("random_target", "navigation_agent_3d")]
+script = ExtResource("1_nwpt0")
+random_target = NodePath("TargetComponent")
+navigation_agent_3d = NodePath("NavigationAgent3D")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 3.0
+debug_enabled = true
+
+[node name="TargetComponent" parent="." instance=ExtResource("2_lu8tk")]
+top_level = true

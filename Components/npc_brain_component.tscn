@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cotpr3i7p4il1"]
+
+[ext_resource type="Script" uid="uid://bx4n5diup2157" path="res://Components/npc_brain_component.gd" id="1_enye8"]
+
+[node name="NPCBrainComponent" type="Node"]
+script = ExtResource("1_enye8")

@@ -11,8 +11,22 @@ config_version=5
 [application]
 
 config/name="collab-jam"
+run/main_scene="res://Levels/pathing_test.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://Components/": "gray",
+"res://Components/Resources/": "pink"
+}
+
+[layer_names]
+
+3d_physics/layer_1="world"
+3d_physics/layer_2="pathing"
+3d_physics/layer_3="perception"
 
 [rendering]
 

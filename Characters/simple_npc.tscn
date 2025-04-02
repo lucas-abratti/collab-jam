@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://drhtniwfk48uo"]
+
+[ext_resource type="Texture2D" uid="uid://h0wpp4wsowpd" path="res://Assets/3D/Textures/red_08.png" id="1_f75jd"]
+[ext_resource type="Script" uid="uid://uavhegfrcj52" path="res://Characters/simple_npc.gd" id="1_vhjqn"]
+[ext_resource type="PackedScene" uid="uid://cotpr3i7p4il1" path="res://Components/npc_brain_component.tscn" id="2_ovsrb"]
+[ext_resource type="PackedScene" uid="uid://clwxeycewuht2" path="res://Components/target_follow_component.tscn" id="3_8aw5m"]
+[ext_resource type="PackedScene" uid="uid://1ne5ws6c61v2" path="res://Components/interaction_scanner_component.tscn" id="4_7xisi"]
+[ext_resource type="PackedScene" uid="uid://burq6ari61p54" path="res://Assets/3D/InheritedScenes/figurine.tscn" id="5_ovsrb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhjqn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8aw5m"]
+albedo_texture = ExtResource("1_f75jd")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cnq6y"]
+
+[node name="SimpleNPC" type="CharacterBody3D" node_paths=PackedStringArray("animation_player", "target_follow_component")]
+script = ExtResource("1_vhjqn")
+animation_player = NodePath("figurine/AnimationPlayer")
+target_follow_component = NodePath("TargetFollowComponent")
+
+[node name="NPCBrainComponent" parent="." node_paths=PackedStringArray("target_follow_component") instance=ExtResource("2_ovsrb")]
+target_follow_component = NodePath("../TargetFollowComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_vhjqn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_8aw5m")
+mesh = SubResource("CapsuleMesh_cnq6y")
+
+[node name="TargetFollowComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_8aw5m")]
+character = NodePath("..")
+
+[node name="InteractionScannerComponent" parent="." instance=ExtResource("4_7xisi")]
+
+[node name="figurine" parent="." instance=ExtResource("5_ovsrb")]
+
+[editable path="figurine"]

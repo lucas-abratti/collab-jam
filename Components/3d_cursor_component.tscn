@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c106aasw50341"]
+
+[ext_resource type="Script" uid="uid://dv0gtyhbtn4qe" path="res://Components/3d_cursor_component.gd" id="1_h0p80"]
+[ext_resource type="Resource" uid="uid://n8wvl0hdrhna" path="res://Components/GlobalEvents/mouse_position_sent.tres" id="2_16r2i"]
+
+[node name="3DCursorComponent" type="Node"]
+script = ExtResource("1_h0p80")
+mouse_position_sent = ExtResource("2_16r2i")

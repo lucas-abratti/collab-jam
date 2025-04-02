@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0k1n3x0u22jb"]
+
+[ext_resource type="Texture2D" uid="uid://bv680wpqqdmme" path="res://Assets/3D/Textures/orange_08.png" id="1_82rv7"]
+[ext_resource type="Script" uid="uid://ch0mmf61ocpgy" path="res://Components/mouse_target_component.gd" id="1_xt01l"]
+[ext_resource type="Resource" uid="uid://n8wvl0hdrhna" path="res://Components/GlobalEvents/mouse_position_sent.tres" id="2_lkadp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbwfa"]
+albedo_texture = ExtResource("1_82rv7")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ds2uo"]
+height = 0.5
+
+[node name="MouseTargetComponent" type="Marker3D"]
+script = ExtResource("1_xt01l")
+mouse_position_sent = ExtResource("2_lkadp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xbwfa")
+mesh = SubResource("CylinderMesh_ds2uo")
+skeleton = NodePath("../..")

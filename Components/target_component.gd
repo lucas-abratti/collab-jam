@@ -1,0 +1,4 @@
+extends Marker3D
+class_name TargetComponent
+
+signal position_changed

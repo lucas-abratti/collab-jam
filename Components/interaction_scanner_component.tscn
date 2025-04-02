@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ne5ws6c61v2"]
+
+[ext_resource type="Script" uid="uid://d2wyqp4liqflk" path="res://Components/interaction_scanner_component.gd" id="1_wt5o7"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hj0si"]
+radius = 5.0
+
+[node name="InteractionScannerComponent" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_wt5o7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_hj0si")
+debug_color = Color(0, 1, 0, 1)

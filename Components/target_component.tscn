@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://clugqmvrgjo51"]
+
+[ext_resource type="Script" uid="uid://oe0t35tfc721" path="res://Components/target_component.gd" id="1_bynih"]
+[ext_resource type="Texture2D" uid="uid://bv680wpqqdmme" path="res://Assets/3D/Textures/orange_08.png" id="2_qn8u1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0ygy"]
+albedo_texture = ExtResource("2_qn8u1")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bynih"]
+height = 0.5
+
+[node name="TargetComponent" type="Marker3D"]
+script = ExtResource("1_bynih")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_a0ygy")
+mesh = SubResource("CylinderMesh_bynih")
