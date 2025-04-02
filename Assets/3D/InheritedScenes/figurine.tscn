@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://burq6ari61p54"]
+
+[ext_resource type="PackedScene" uid="uid://cgjet0sgw40xi" path="res://Assets/3D/3DModels/figurine.glb" id="1_dqm8j"]
+[ext_resource type="Texture2D" uid="uid://dbxscwxfc2ova" path="res://Assets/3D/Textures/figurine_colormap.png" id="2_w6swx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elgsg"]
+albedo_texture = ExtResource("2_w6swx")
+
+[node name="figurine" instance=ExtResource("1_dqm8j")]
+
+[node name="figurine" parent="." index="0"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="leg-left" parent="figurine/root" index="0"]
+material_override = SubResource("StandardMaterial3D_elgsg")
+
+[node name="leg-right" parent="figurine/root" index="1"]
+material_override = SubResource("StandardMaterial3D_elgsg")
+
+[node name="torso" parent="figurine/root" index="2"]
+material_override = SubResource("StandardMaterial3D_elgsg")
+
+[node name="arm-left" parent="figurine/root/torso" index="0"]
+material_override = SubResource("StandardMaterial3D_elgsg")
+
+[node name="arm-right" parent="figurine/root/torso" index="1"]
+material_override = SubResource("StandardMaterial3D_elgsg")
+
+[node name="head" parent="figurine/root/torso" index="2"]
+material_override = SubResource("StandardMaterial3D_elgsg")
