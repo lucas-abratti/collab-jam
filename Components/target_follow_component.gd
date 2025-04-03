@@ -1,9 +1,6 @@
 extends Node3D
 class_name TargetFollowComponent
 
-signal navigation_started
-signal navigation_finished
-
 @export_category("Components")
 @export var mouse_target: TargetComponent
 @export var random_target: TargetComponent
@@ -27,14 +24,13 @@ var current_velocity: Vector3
 
 func _ready() -> void:
 	navigation_agent_3d.target_position = global_position
-	navigation_agent_3d.navigation_finished.connect(on_navigation_finished)
 	mouse_position_sent.global_signal.connect(on_mouse_position_sent)
 	if (mouse_target != null): 
 		current_target = mouse_target
 	else:
 		current_target = random_target
 
-func _process(delta: float) -> void:
+func update_position(delta: float) -> void:
 	if (target_reached): return
 	if (current_target == null): return
 	navigation_agent_3d.target_position = current_target.global_position
@@ -52,14 +48,9 @@ func _process(delta: float) -> void:
 		delta * 5.0
 	)
 
-func on_navigation_finished() -> void:
-	target_reached = true
-	navigation_finished.emit()
-
 func on_current_target_position_changed() -> void:
 	navigation_agent_3d.target_position = current_target.global_position
 	target_reached = false
-	navigation_started.emit()
 
 func set_current_target(new_target: TargetComponent) -> void:
 	if (!new_target.position_changed.has_connections()):
@@ -74,7 +65,7 @@ func on_mouse_position_sent(pos: Vector3) -> void:
 	current_target.position_changed.emit()
 
 func go_to_random_position() -> void:
-	var range: int = 20
+	var range: int = 25
 	current_target = random_target
-	random_target.global_position += Vector3(randi() % range - randi() % range, 0, randi() % range - randi() % range)
+	random_target.global_position = Vector3(randi() % range - randi() % range, 1, randi() % range - randi() % range)
 	random_target.position_changed.emit()

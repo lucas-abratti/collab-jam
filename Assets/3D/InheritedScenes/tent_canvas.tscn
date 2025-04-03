@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dskhtk2g1y5s8"]
+
+[ext_resource type="PackedScene" uid="uid://dpittapgakbw4" path="res://Assets/3D/3DModels/tent-canvas.glb" id="1_eg7jq"]
+[ext_resource type="Material" uid="uid://dj2bo2dscp32p" path="res://Assets/3D/3DModels/colormap.tres" id="2_il4to"]
+
+[node name="tent-canvas" instance=ExtResource("1_eg7jq")]
+
+[node name="tent-canvas" parent="." index="0"]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0)
+material_override = ExtResource("2_il4to")

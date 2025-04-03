@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dj2bo2dscp32p"]
+
+[ext_resource type="Texture2D" uid="uid://dbxscwxfc2ova" path="res://Assets/3D/Textures/colormap.png" id="1_x5tky"]
+
+[resource]
+albedo_texture = ExtResource("1_x5tky")
+uv1_offset = Vector3(1.12, 0, 0)
+uv1_triplanar_sharpness = 14.42

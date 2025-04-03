@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxdligsw2dvf4"]
+
+[ext_resource type="Script" uid="uid://siaumeqml5q8" path="res://Components/need_gauge_component.gd" id="1_2o0l2"]
+
+[node name="NeedGaugeComponent" type="Node"]
+script = ExtResource("1_2o0l2")

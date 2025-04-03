@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyhja5h2wnh7n"]
+
+[ext_resource type="PackedScene" uid="uid://c7dq3ctrpmfkw" path="res://Assets/3D/3DModels/fish.glb" id="1_u4i3t"]
+[ext_resource type="Texture2D" uid="uid://dbxscwxfc2ova" path="res://Assets/3D/Textures/colormap.png" id="2_2ox1y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yorom"]
+albedo_texture = ExtResource("2_2ox1y")
+uv1_offset = Vector3(0.055, 0, 0)
+uv1_triplanar_sharpness = 14.42
+
+[node name="fish" instance=ExtResource("1_u4i3t")]
+
+[node name="fish" parent="." index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_yorom")

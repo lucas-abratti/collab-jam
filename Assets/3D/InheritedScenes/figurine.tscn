@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://burq6ari61p54"]
+[gd_scene load_steps=5 format=3 uid="uid://burq6ari61p54"]
 
 [ext_resource type="PackedScene" uid="uid://cgjet0sgw40xi" path="res://Assets/3D/3DModels/figurine.glb" id="1_dqm8j"]
-[ext_resource type="Texture2D" uid="uid://dbxscwxfc2ova" path="res://Assets/3D/Textures/figurine_colormap.png" id="2_w6swx"]
+[ext_resource type="Texture2D" uid="uid://dbxscwxfc2ova" path="res://Assets/3D/Textures/colormap.png" id="2_w6swx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elgsg"]
 albedo_texture = ExtResource("2_w6swx")
+
+[sub_resource type="PrismMesh" id="PrismMesh_w6swx"]
 
 [node name="figurine" instance=ExtResource("1_dqm8j")]
 
@@ -12,19 +14,28 @@ albedo_texture = ExtResource("2_w6swx")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="leg-left" parent="figurine/root" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0.1, 0.25, 1.49019e-09)
 material_override = SubResource("StandardMaterial3D_elgsg")
 
 [node name="leg-right" parent="figurine/root" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, -0.1, 0.3, -1.82787e-09)
 material_override = SubResource("StandardMaterial3D_elgsg")
 
 [node name="torso" parent="figurine/root" index="2"]
 material_override = SubResource("StandardMaterial3D_elgsg")
 
 [node name="arm-left" parent="figurine/root/torso" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.2, 0.2, 5.62298e-09)
 material_override = SubResource("StandardMaterial3D_elgsg")
 
 [node name="arm-right" parent="figurine/root/torso" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, -0.2, 0.2, -2.94549e-09)
 material_override = SubResource("StandardMaterial3D_elgsg")
 
 [node name="head" parent="figurine/root/torso" index="2"]
 material_override = SubResource("StandardMaterial3D_elgsg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="figurine" index="1"]
+transform = Transform3D(0.333333, 0, 0, 0, -1.45705e-08, -0.0666667, 0, 0.333333, -2.91409e-09, 0, 0.666667, 0.333333)
+mesh = SubResource("PrismMesh_w6swx")
+skeleton = NodePath("../..")

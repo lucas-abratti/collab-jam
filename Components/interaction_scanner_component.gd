@@ -7,5 +7,4 @@ func _ready() -> void:
 	area_entered.connect(on_area_entered)
 
 func on_area_entered(area: InteractableComponent) -> void:
-	print("Interactable available")
 	interactable_found.emit(area)

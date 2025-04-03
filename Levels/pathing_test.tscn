@@ -1,14 +1,17 @@
-[gd_scene load_steps=16 format=3 uid="uid://b41an0cx1husp"]
+[gd_scene load_steps=19 format=3 uid="uid://b41an0cx1husp"]
 
 [ext_resource type="Texture2D" uid="uid://b43vk0vry6cuw" path="res://Assets/3D/Textures/green_10.png" id="1_8b0gh"]
 [ext_resource type="Texture2D" uid="uid://d13a6tc8t2gmv" path="res://Assets/3D/Textures/dark_08.png" id="2_0llon"]
 [ext_resource type="PackedScene" uid="uid://drhtniwfk48uo" path="res://Characters/simple_npc.tscn" id="2_ds2uo"]
 [ext_resource type="PackedScene" uid="uid://b0k1n3x0u22jb" path="res://Components/mouse_target_component.tscn" id="3_2q8mi"]
 [ext_resource type="PackedScene" uid="uid://c106aasw50341" path="res://Components/3d_cursor_component.tscn" id="3_xbwfa"]
+[ext_resource type="PackedScene" uid="uid://c4ol7r41bqm8t" path="res://Components/interactable_component.tscn" id="6_0llon"]
+[ext_resource type="PackedScene" uid="uid://dskhtk2g1y5s8" path="res://Assets/3D/InheritedScenes/tent_canvas.tscn" id="7_8kmm4"]
+[ext_resource type="PackedScene" uid="uid://bwkg05lr0pwd7" path="res://Assets/3D/InheritedScenes/camp_fire.tscn" id="8_7ffnx"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ds2uo"]
-vertices = PackedVector3Array(13.5, 0.754123, -20, 13.5, 0.754123, -24.5, -24.5, 0.754123, -24.5, -24.5, 0.754123, -20, 15.5, 0.754123, -20, 16.25, 0.754123, -19.25, 24.5, 0.754123, -24.5, 16.25, 0.754123, 1.25, 15.75, 0.754123, 1.75, 24.5, 0.754123, 1.75, -12, 0.754123, 4.5, -11.75, 0.754123, 5, -5.5, 0.754123, 1.75, -5.5, 0.754123, 0.25, -13.75, 0.754123, 4.5, -24.5, 0.754123, 6.75, -4, 0.754123, -17.75, -24.5, 0.754123, -17.75, -14, 0.754123, 6.75, -3.75, 0.754123, 0, 14, 0.754123, 0, 14, 0.754123, -17.75, 1.5, 0.754123, 24.5, 1.75, 0.754123, 21.25, 0.25, 0.754123, 21.25, -11.75, 0.754123, 24.5, -5.25, 0.754123, 2.25, 4.5, 1.50412, 9.25, 6.25, 1.75412, 9, 6, 1.75412, 2.25, 10, 2.00412, 20.25, 10, 2.00412, 11.25, 4.75, 1.50412, 11.25, 0.25, 1.00412, 20.25, -2.48963, 0.754123, 8.0156, 15.5, 0.754123, 2.25, 11, 0.754123, 2.25, 11, 0.754123, 9, 24.5, 0.754123, 9, 10, 2.00412, 9, 10, 2.00412, 2.25, -24.5, 0.754123, 24.5, -14, 0.754123, 24.5, 11, 0.754123, 21, 24.5, 0.754123, 24.5, 24.5, 0.754123, 11.25, 11, 0.754123, 11.25)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(4, 0, 1), PackedInt32Array(4, 1, 5), PackedInt32Array(5, 1, 6), PackedInt32Array(9, 8, 7), PackedInt32Array(7, 5, 9), PackedInt32Array(9, 5, 6), PackedInt32Array(12, 11, 10), PackedInt32Array(12, 10, 13), PackedInt32Array(13, 10, 14), PackedInt32Array(14, 15, 13), PackedInt32Array(13, 15, 16), PackedInt32Array(16, 15, 17), PackedInt32Array(14, 18, 15), PackedInt32Array(16, 19, 13), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 16), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(11, 12, 26), PackedInt32Array(29, 28, 27), PackedInt32Array(31, 30, 32), PackedInt32Array(32, 30, 33), PackedInt32Array(33, 24, 25), PackedInt32Array(27, 32, 33), PackedInt32Array(25, 34, 33), PackedInt32Array(33, 34, 27), PackedInt32Array(27, 34, 29), PackedInt32Array(29, 34, 26), PackedInt32Array(26, 34, 11), PackedInt32Array(11, 34, 25), PackedInt32Array(37, 36, 35), PackedInt32Array(35, 8, 9), PackedInt32Array(9, 38, 35), PackedInt32Array(35, 38, 37), PackedInt32Array(39, 28, 40), PackedInt32Array(40, 28, 29), PackedInt32Array(42, 41, 18), PackedInt32Array(18, 41, 15), PackedInt32Array(23, 43, 22), PackedInt32Array(22, 43, 44), PackedInt32Array(46, 45, 43), PackedInt32Array(43, 45, 44)]
+vertices = PackedVector3Array(13.5, 0.85876, -20, 13.5, 0.85876, -24.5, -24.5, 0.85876, -24.5, -24.5, 0.85876, -20, 15.5, 0.85876, -20, 16.25, 0.85876, -19.25, 24.5, 0.85876, -24.5, 16.25, 0.85876, 1.25, 15.75, 0.85876, 1.75, 24.5, 0.85876, 1.75, 15, 0.85876, 9, 15, 0.85876, 1.75, 14, 0.85876, 1.5, 4.75, 0.85876, 9, -24.5, 0.85876, 6.75, -14, 0.85876, 6.75, -14, 0.85876, 4.75, -24.5, 0.85876, -17.75, -12, 0.85876, 4.5, -11.75, 0.85876, 10, 4.5, 0.85876, 10, 14, 0.85876, -17.75, 24.5, 0.85876, 9, -24.5, 0.85876, 24.5, -14, 0.85876, 24.5, 6, 0.85876, 24.5, 6.25, 0.85876, 11.25, 4.75, 0.85876, 11.25, -11.75, 0.85876, 24.5, 24.5, 0.85876, 24.5, 24.5, 0.85876, 11.25)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(4, 0, 1), PackedInt32Array(4, 1, 5), PackedInt32Array(5, 1, 6), PackedInt32Array(9, 8, 7), PackedInt32Array(7, 5, 9), PackedInt32Array(9, 5, 6), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(18, 16, 17), PackedInt32Array(20, 19, 13), PackedInt32Array(13, 19, 18), PackedInt32Array(13, 18, 12), PackedInt32Array(12, 18, 21), PackedInt32Array(21, 18, 17), PackedInt32Array(10, 11, 8), PackedInt32Array(9, 22, 8), PackedInt32Array(8, 22, 10), PackedInt32Array(24, 23, 15), PackedInt32Array(15, 23, 14), PackedInt32Array(27, 26, 25), PackedInt32Array(27, 25, 20), PackedInt32Array(20, 25, 19), PackedInt32Array(19, 25, 28), PackedInt32Array(30, 29, 26), PackedInt32Array(26, 29, 25)]
 agent_max_slope = 75.42
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0llon"]
@@ -43,6 +46,7 @@ sky = SubResource("Sky_ds2uo")
 [node name="PathingTest" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
 navigation_mesh = SubResource("NavigationMesh_ds2uo")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
@@ -100,7 +104,7 @@ material_override = SubResource("StandardMaterial3D_8kmm4")
 mesh = SubResource("BoxMesh_7ffnx")
 
 [node name="Wall5" type="StaticBody3D" parent="NavigationRegion3D/Walls"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 3, 1)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 36, 3, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Walls/Wall5"]
 shape = SubResource("BoxShape3D_2q8mi")
@@ -130,8 +134,20 @@ camera = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
 [node name="MouseTargetComponent" parent="." instance=ExtResource("3_2q8mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.212, 2, 3.524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.212, 0, 16.524)
 
 [node name="SimpleNPC" parent="." node_paths=PackedStringArray("target_component") instance=ExtResource("2_ds2uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.17559, -1)
 target_component = NodePath("../MouseTargetComponent")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("6_0llon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.78765, 0.39706, 16.2444)
+
+[node name="InteractableComponent2" parent="." instance=ExtResource("6_0llon")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.21235, 0.39706, 18.2444)
+
+[node name="tent-canvas" parent="." instance=ExtResource("7_8kmm4")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 20, 1, 15)
+
+[node name="CampFire" parent="." instance=ExtResource("8_7ffnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 17)

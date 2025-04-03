@@ -15,11 +15,17 @@ run/main_scene="res://Levels/pathing_test.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Enums="*res://GlobalScripts/enums.gd"
+
 [file_customization]
 
 folder_colors={
+"res://Assets/": "orange",
 "res://Components/": "gray",
-"res://Components/Resources/": "pink"
+"res://Components/Resources/": "pink",
+"res://GlobalScripts/": "yellow"
 }
 
 [layer_names]

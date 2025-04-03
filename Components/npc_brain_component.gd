@@ -9,16 +9,14 @@ signal interacted
 @export var target_follow_component: TargetFollowComponent
 @export var interaction_scanner_component: InteractionScannerComponent
 
-var tasks: Array
+var available_interactions: Array[InteractableComponent]
 
 func _ready() -> void:
-	target_follow_component.navigation_finished.connect(on_navigation_finished)
-	target_follow_component.navigation_started.connect(on_navigation_started)
 	interaction_scanner_component.interactable_found.connect(on_interactable_found)
 
 func on_interactable_found(interactable: InteractableComponent) -> void:
+	available_interactions.append(interactable)
 	target_follow_component.current_target = interactable.target_component
-	await target_follow_component.navigation_finished
 	print("Interaction point reached")
 	if(target_follow_component.current_target == interactable.target_component):
 		interacted.emit()
@@ -32,3 +30,6 @@ func on_navigation_finished() -> void:
 
 func on_navigation_started() -> void:
 	walked.emit()
+
+func find_next_priority() -> InteractableComponent:
+	return null
