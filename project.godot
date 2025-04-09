@@ -13,6 +13,8 @@ config_version=5
 config/name="collab-jam"
 run/main_scene="uid://rucnmxhnb06g"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+run/main_scene="res://Levels/pathing_test.tscn"
+config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,6 +24,14 @@ Enums="*res://GlobalScripts/enums.gd"
 [editor]
 
 run/main_run_args="test"
+
+[dotnet]
+
+project/assembly_name="collab-jam"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/terrabrush/plugin.cfg")
 
 [file_customization]
 
@@ -38,7 +48,6 @@ folder_colors={
 3d_physics/layer_2="pathing"
 3d_physics/layer_3="perception"
 
-[rendering]
+[terraBrush]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+brushes/decal_color=Color(1, 0, 0, 0.65098)
