@@ -1,0 +1,167 @@
+[gd_scene load_steps=34 format=3 uid="uid://p71p3ljneuse"]
+
+[ext_resource type="Script" uid="uid://i5jcj7ukvoen" path="res://addons/terrabrush/TerraBrush.cs" id="1_ebutn"]
+[ext_resource type="Script" uid="uid://k2tvfxm6feg5" path="res://addons/terrabrush/Scripts/EditorResources/WaterResource.cs" id="2_5k581"]
+[ext_resource type="Texture2D" uid="uid://bo3gj4i8xbe07" path="res://Assets/3D/Textures/Terrain/Draghi_Grass_BaseColor-512x512.PNG" id="2_nkh85"]
+[ext_resource type="Texture2D" uid="uid://dfwuknngqtjbh" path="res://Assets/3D/Terrain/Heightmap_0_0.res" id="2_sf6cr"]
+[ext_resource type="Script" uid="uid://d2qebwt0ednya" path="res://addons/terrabrush/Scripts/EditorResources/ZoneResource.cs" id="3_5k581"]
+[ext_resource type="Texture2D" uid="uid://d1y2q7jeuf8fa" path="res://Assets/3D/Textures/Terrain/Draghi_Grass_Normal-512x512.PNG" id="3_12aye"]
+[ext_resource type="Texture2D" uid="uid://bw2758sx3k6o0" path="res://Assets/3D/Textures/Terrain/Draghi_Stone_Height-512x512.PNG" id="3_hfjp8"]
+[ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="4_1aj2h"]
+[ext_resource type="Texture2D" uid="uid://b4vqpr1uixbu1" path="res://Assets/3D/Terrain/Water_0_0.res" id="4_g7f6e"]
+[ext_resource type="Texture2D" uid="uid://beumb0lmu8wus" path="res://Assets/3D/Textures/Terrain/Draghi_Grass_Roughness-512x512.PNG" id="4_wlkvx"]
+[ext_resource type="Script" uid="uid://c2l8t4xcdxwvu" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetResource.cs" id="5_hfjp8"]
+[ext_resource type="Texture2D" uid="uid://xmsp6p0jdflp" path="res://Assets/3D/Textures/Terrain/Draghi_Stone_BaseColor-512x512.PNG" id="6_nnpuq"]
+[ext_resource type="Texture2D" uid="uid://ild1ckowvb1y" path="res://Assets/3D/Textures/Terrain/Draghi_Stone_Normal-512x512.PNG" id="7_1ti6m"]
+[ext_resource type="Texture2D" uid="uid://wfhd67sonr8p" path="res://Assets/3D/Textures/Terrain/Draghi_Stone_Roughness-512x512.PNG" id="8_cucko"]
+[ext_resource type="Texture2D" uid="uid://bt2p1tfl2sm2s" path="res://Assets/3D/Textures/Terrain/Draghi_Grass_Height-512x512.PNG" id="8_nnpuq"]
+[ext_resource type="Texture2D" uid="uid://by0g8pxcaxak3" path="res://Assets/3D/Textures/Terrain/Draghi_Sand_BaseColor-512x512.PNG" id="9_0chne"]
+[ext_resource type="Texture2D" uid="uid://cwqk82h2ibtjn" path="res://Assets/3D/Textures/Terrain/Draghi_Sand_Normal-512x512.PNG" id="10_8vagg"]
+[ext_resource type="Texture2D" uid="uid://drve4s0sh4n26" path="res://Assets/3D/Textures/Terrain/Draghi_Sand_Roughness-512x512.PNG" id="11_nx2ne"]
+[ext_resource type="Script" uid="uid://043vjblb04jf" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetsResource.cs" id="12_8x7f6"]
+[ext_resource type="Texture2D" uid="uid://c13klptk3o5lh" path="res://Assets/3D/Terrain/Splatmap_0_0_0.res" id="17_1ti6m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ebutn"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_bottom_color = Color(0.75, 0.85, 1, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_curve = 0.0414106
+
+[sub_resource type="Sky" id="Sky_sf6cr"]
+sky_material = SubResource("ProceduralSkyMaterial_ebutn")
+
+[sub_resource type="Environment" id="Environment_5k581"]
+background_mode = 2
+sky = SubResource("Sky_sf6cr")
+ambient_light_energy = 0.0
+tonemap_mode = 2
+tonemap_exposure = 1.85
+tonemap_white = 1.7
+fog_enabled = true
+fog_light_color = Color(0.74902, 0.85098, 1, 1)
+fog_density = 0.0
+fog_height = 43.09
+fog_height_density = 0.0743
+fog_depth_curve = 5.46417
+fog_depth_begin = 0.0
+fog_depth_end = 1226.9
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0233
+volumetric_fog_albedo = Color(0.61, 0.818, 1, 1)
+volumetric_fog_emission = Color(0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="Resource" id="Resource_xtspo"]
+script = ExtResource("5_hfjp8")
+Name = "Stone"
+AlbedoTexture = ExtResource("6_nnpuq")
+NormalTexture = ExtResource("7_1ti6m")
+RoughnessTexture = ExtResource("8_cucko")
+HeightTexture = ExtResource("3_hfjp8")
+TextureDetail = -1
+Triplanar = true
+metadata/_custom_type_script = "uid://c2l8t4xcdxwvu"
+
+[sub_resource type="Resource" id="Resource_krlal"]
+script = ExtResource("5_hfjp8")
+Name = "Grass"
+AlbedoTexture = ExtResource("2_nkh85")
+NormalTexture = ExtResource("3_12aye")
+RoughnessTexture = ExtResource("4_wlkvx")
+HeightTexture = ExtResource("8_nnpuq")
+TextureDetail = -1
+Triplanar = true
+metadata/_custom_type_script = "uid://c2l8t4xcdxwvu"
+
+[sub_resource type="Resource" id="Resource_bs5ej"]
+script = ExtResource("5_hfjp8")
+Name = "Sand"
+AlbedoTexture = ExtResource("9_0chne")
+NormalTexture = ExtResource("10_8vagg")
+RoughnessTexture = ExtResource("11_nx2ne")
+HeightTexture = ExtResource("9_0chne")
+TextureDetail = -1
+Triplanar = true
+metadata/_custom_type_script = "uid://c2l8t4xcdxwvu"
+
+[sub_resource type="Resource" id="Resource_pk6nv"]
+script = ExtResource("12_8x7f6")
+TextureSets = [SubResource("Resource_xtspo"), SubResource("Resource_krlal"), SubResource("Resource_bs5ej")]
+metadata/_custom_type_script = "uid://043vjblb04jf"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5k581"]
+seed = 1
+frequency = 0.0023
+fractal_type = 2
+fractal_octaves = 4
+fractal_weighted_strength = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1aj2h"]
+seamless = true
+seamless_blend_skirt = 0.331
+noise = SubResource("FastNoiseLite_5k581")
+
+[sub_resource type="Resource" id="Resource_g7f6e"]
+script = ExtResource("2_5k581")
+WaterFactor = 1.645
+WaterInnerOffset = 0.302
+WaterColor = Color(0.6992, 0.87216, 0.92, 1)
+WaterFresnelColor = Color(1, 1, 1, 1)
+WaterMetallic = 0.0
+WaterRoughness = 0.0
+WaterTimeScale = 0.1
+WaterStrength = 0.7
+WaterWave = SubResource("NoiseTexture2D_1aj2h")
+WaterNoiseScale = 10.0
+WaterHeightScale = 0.15
+WaterColorDeep = Color(3.60981e-08, 0.139715, 0.269424, 1)
+WaterColorShallow = Color(0, 0.141176, 0.270588, 1)
+WaterBeersLaw = 2.0
+WaterDepthOffset = -0.75
+WaterEdgeScale = 0.1
+WaterNear = 4.0
+WaterFar = 100.0
+WaterEdgeColor = Color(1, 1, 1, 1)
+VisualInstanceLayers = 1
+metadata/_custom_type_script = "uid://k2tvfxm6feg5"
+
+[sub_resource type="Resource" id="Resource_ebutn"]
+script = ExtResource("3_5k581")
+ZonePosition = Vector2i(0, 0)
+HeightMapTexture = ExtResource("2_sf6cr")
+SplatmapsTexture = [ExtResource("17_1ti6m")]
+FoliagesTexture = []
+ObjectsTexture = []
+WaterTexture = ExtResource("4_g7f6e")
+
+[sub_resource type="Resource" id="Resource_sf6cr"]
+script = ExtResource("4_1aj2h")
+Zones = [SubResource("Resource_ebutn")]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebutn"]
+
+[node name="level1-1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5k581")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.820433, 0.0417537, 0.570216, -0.442677, 0.677568, 0.587314, -0.361838, -0.734274, 0.574383, 0, 44.2563, 0)
+light_energy = 0.65
+shadow_enabled = true
+
+[node name="TerraBrush" type="Node3D" parent="."]
+script = ExtResource("1_ebutn")
+DataPath = "res://Assets/3D/Terrain"
+TextureSets = SubResource("Resource_pk6nv")
+WaterDefinition = SubResource("Resource_g7f6e")
+TerrainZones = SubResource("Resource_sf6cr")
+metadata/_custom_type_script = "uid://i5jcj7ukvoen"
+metadata/_edit_lock_ = false
+
+[node name="Scale Reference" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.3626, 51.1755, 23.388)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7177, 0)
+radius = 2231.65
+material = SubResource("StandardMaterial3D_ebutn")
