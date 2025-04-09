@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://drhtniwfk48uo" path="res://Characters/simple_npc.tscn" id="2_ds2uo"]
 [ext_resource type="PackedScene" uid="uid://b0k1n3x0u22jb" path="res://Components/mouse_target_component.tscn" id="3_2q8mi"]
 [ext_resource type="PackedScene" uid="uid://c106aasw50341" path="res://Components/3d_cursor_component.tscn" id="3_xbwfa"]
-[ext_resource type="PackedScene" uid="uid://c4ol7r41bqm8t" path="res://Components/interactable_component.tscn" id="6_0llon"]
+[ext_resource type="PackedScene" uid="uid://bryvc1va1ij6n" path="res://Assets/3D/3DModels/ij_Cuberry.glb" id="5_7ffnx"]
 [ext_resource type="PackedScene" uid="uid://dskhtk2g1y5s8" path="res://Assets/3D/InheritedScenes/tent_canvas.tscn" id="7_8kmm4"]
 [ext_resource type="PackedScene" uid="uid://bwkg05lr0pwd7" path="res://Assets/3D/InheritedScenes/camp_fire.tscn" id="8_7ffnx"]
 
@@ -136,18 +136,20 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 [node name="MouseTargetComponent" parent="." instance=ExtResource("3_2q8mi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.212, 0, 16.524)
 
+[node name="MeshInstance3D" parent="MouseTargetComponent" index="0"]
+visible = false
+
+[node name="ij_Cuberry" parent="MouseTargetComponent" instance=ExtResource("5_7ffnx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
 [node name="SimpleNPC" parent="." node_paths=PackedStringArray("target_component") instance=ExtResource("2_ds2uo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.17559, -1)
 target_component = NodePath("../MouseTargetComponent")
-
-[node name="InteractableComponent" parent="." instance=ExtResource("6_0llon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.78765, 0.39706, 16.2444)
-
-[node name="InteractableComponent2" parent="." instance=ExtResource("6_0llon")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.21235, 0.39706, 18.2444)
 
 [node name="tent-canvas" parent="." instance=ExtResource("7_8kmm4")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 20, 1, 15)
 
 [node name="CampFire" parent="." instance=ExtResource("8_7ffnx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 17)
+
+[editable path="MouseTargetComponent"]

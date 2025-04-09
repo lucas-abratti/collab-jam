@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cem08upkr45ra"]
+
+[ext_resource type="Script" uid="uid://bouujukr2wd7y" path="res://Components/sin_rotator_component.gd" id="1_r0y81"]
+
+[node name="SinRotatorComponent" type="Node"]
+script = ExtResource("1_r0y81")

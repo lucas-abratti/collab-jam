@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://0xr8nlcs2jlu"]
+
+[ext_resource type="PackedScene" uid="uid://bpsjaoosoudy0" path="res://Components/sin_mover_component.tscn" id="1_x4fab"]
+[ext_resource type="PackedScene" uid="uid://cem08upkr45ra" path="res://Components/sin_rotator_component.tscn" id="2_hsoeg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x4fab"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -6, 0, 0)
+
+[node name="DragonHead" type="Node3D" parent="."]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, -2, 0)
+
+[node name="DragonBodySegment1" type="Node3D" parent="DragonHead"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DragonHead/DragonBodySegment1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("CapsuleMesh_x4fab")
+
+[node name="DragonBodySegment2" type="Node3D" parent="DragonHead/DragonBodySegment1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DragonHead/DragonBodySegment1/DragonBodySegment2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("CapsuleMesh_x4fab")
+
+[node name="DragonBodySegment3" type="Node3D" parent="DragonHead/DragonBodySegment1/DragonBodySegment2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74846e-07, -4, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DragonHead/DragonBodySegment1/DragonBodySegment2/DragonBodySegment3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("CapsuleMesh_x4fab")
+
+[node name="SinMoverComponent" parent="DragonHead" node_paths=PackedStringArray("target") instance=ExtResource("1_x4fab")]
+process_mode = 4
+target = NodePath("..")
+axis = 1
+frequency = 2.0
+amplitude = 0.05
+
+[node name="SinRotatorComponent" parent="DragonHead" node_paths=PackedStringArray("target") instance=ExtResource("2_hsoeg")]
+target = NodePath("..")
+axis = 2
+frequency = 10.0
+amplitude = 0.05

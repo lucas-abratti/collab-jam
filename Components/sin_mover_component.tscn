@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpsjaoosoudy0"]
+
+[ext_resource type="Script" uid="uid://c18f78bacypi3" path="res://Components/sin_mover_component.gd" id="1_fshvk"]
+
+[node name="SinMoverComponent" type="Node"]
+script = ExtResource("1_fshvk")

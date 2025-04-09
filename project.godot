@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="collab-jam"
-run/main_scene="res://Levels/pathing_test.tscn"
+run/main_scene="uid://rucnmxhnb06g"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Enums="*res://GlobalScripts/enums.gd"
+
+[editor]
+
+run/main_run_args="test"
 
 [file_customization]
 

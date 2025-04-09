@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export_category("Nodes")
 @export var animation_player: AnimationPlayer
 @export var target_follow_component: TargetFollowComponent
-@export var fish: Node3D
+@export var food: Node3D
 
 @export_category("AI")
 @export var ai:UtilityAIAgent
@@ -15,9 +15,11 @@ extends CharacterBody3D
 @export var distance_to_target_sensor: UtilityAISensor
 @export var exhaustion_sensor: UtilityAISensor
 @export var hunger_sensor: UtilityAISensor
+@export var food_sensor: UtilityAISensor
 
 var exhaustion: float = 0.0
-var hunger: float = 0.5
+@export var hunger: float = 0.5
+@export var available_food: float = 0
 
 func _ready() -> void:
 	animation_player.animation_finished.connect(on_animation_finished)
@@ -37,6 +39,8 @@ func _process(delta: float) -> void:
 	distance_to_target_sensor.sensor_value = distance / 1000.0
 	exhaustion_sensor.sensor_value = exhaustion
 	hunger_sensor.sensor_value = hunger
+	hunger_sensor.is_active = available_food > 0
+	food_sensor.sensor_value = available_food / 10
 	# Think
 	ai.evaluate_options(delta)
 	ai.update_current_behaviour()
@@ -64,10 +68,10 @@ func _process(delta: float) -> void:
 			current_action.is_finished = true
 	elif current_action.name == "Eat":
 		if (hunger >= 0.1):
-			fish.visible = true
+			food.visible = true
 			animation_player.play("interact-right")
 		else:
-			fish.visible = false
+			food.visible = false
 			current_action.is_finished = true
 
 func start_action(action_node: UtilityAIAction):
@@ -104,7 +108,14 @@ func _on_utility_ai_agent_action_changed(action_node: UtilityAIAction):
 
 func on_animation_finished(anim_name: String) -> void:
 	if (anim_name == "interact-left" && current_action != null):
+		available_food += 0.2
 		current_action.is_finished = true
 	if (anim_name == "interact-right" && current_action != null):
-		hunger -= 1
+		print_rich("[color=red]Eating %s | %s" % [hunger, available_food])
+		if (available_food > 1):
+			hunger -= 1
+			available_food -= 1
+		else:
+			hunger -= available_food
+			available_food = 0
 	
