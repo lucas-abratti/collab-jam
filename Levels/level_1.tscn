@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfu35f0hxq7a"]
+
+[ext_resource type="PackedScene" uid="uid://1aa3hyv737mw" path="res://Assets/3D/Terrain/Geometry/Level1-1.glb" id="1_n0qsc"]
+
+[node name="Level1-1" instance=ExtResource("1_n0qsc")]
+
+[node name="CollisionShape3D" parent="level1-1_terrain/StaticBody3D" index="0"]
+visible = false

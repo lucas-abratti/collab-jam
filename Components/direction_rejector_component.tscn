@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dicililuf3psk"]
+
+[ext_resource type="Script" uid="uid://d2wtceesgq2xy" path="res://Components/direction_rejector_component.gd" id="1_a7qve"]
+
+[node name="DirectionRejectorComponent" type="Node"]
+script = ExtResource("1_a7qve")

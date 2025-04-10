@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GlobalEventVector3" load_steps=2 format=3 uid="uid://dpw7sbfx2mjro"]
+
+[ext_resource type="Script" uid="uid://8dysbrpqwkxt" path="res://Components/Resources/GlobalEvents/GlobalEventVector3.gd" id="1_okvkm"]
+
+[resource]
+script = ExtResource("1_okvkm")
+metadata/_custom_type_script = "uid://8dysbrpqwkxt"

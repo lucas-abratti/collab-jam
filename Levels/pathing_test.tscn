@@ -1,18 +1,30 @@
-[gd_scene load_steps=19 format=3 uid="uid://b41an0cx1husp"]
+[gd_scene load_steps=23 format=3 uid="uid://b41an0cx1husp"]
 
 [ext_resource type="Texture2D" uid="uid://b43vk0vry6cuw" path="res://Assets/3D/Textures/green_10.png" id="1_8b0gh"]
 [ext_resource type="Texture2D" uid="uid://d13a6tc8t2gmv" path="res://Assets/3D/Textures/dark_08.png" id="2_0llon"]
+[ext_resource type="Resource" uid="uid://dpw7sbfx2mjro" path="res://Components/GlobalEvents/left_click_position_sent.tres" id="2_2dkkv"]
 [ext_resource type="PackedScene" uid="uid://drhtniwfk48uo" path="res://Characters/simple_npc.tscn" id="2_ds2uo"]
 [ext_resource type="PackedScene" uid="uid://b0k1n3x0u22jb" path="res://Components/mouse_target_component.tscn" id="3_2q8mi"]
+[ext_resource type="Resource" uid="uid://bjstlcpyjgucf" path="res://Components/GlobalEvents/right_click_position_sent.tres" id="3_rnrpv"]
 [ext_resource type="PackedScene" uid="uid://c106aasw50341" path="res://Components/3d_cursor_component.tscn" id="3_xbwfa"]
+[ext_resource type="PackedScene" uid="uid://e0g8viro2no7" path="res://Components/direction_attractor_component.tscn" id="4_ibumx"]
 [ext_resource type="PackedScene" uid="uid://bryvc1va1ij6n" path="res://Assets/3D/3DModels/ij_Cuberry.glb" id="5_7ffnx"]
+[ext_resource type="PackedScene" uid="uid://dicililuf3psk" path="res://Components/direction_rejector_component.tscn" id="5_duyih"]
 [ext_resource type="PackedScene" uid="uid://dskhtk2g1y5s8" path="res://Assets/3D/InheritedScenes/tent_canvas.tscn" id="7_8kmm4"]
 [ext_resource type="PackedScene" uid="uid://bwkg05lr0pwd7" path="res://Assets/3D/InheritedScenes/camp_fire.tscn" id="8_7ffnx"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_ds2uo"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8b0gh"]
+
+[sub_resource type="Sky" id="Sky_ds2uo"]
+sky_material = SubResource("ProceduralSkyMaterial_8b0gh")
+
+[sub_resource type="Environment" id="Environment_2q8mi"]
+background_mode = 2
+sky = SubResource("Sky_ds2uo")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_ibumx"]
 vertices = PackedVector3Array(13.5, 0.85876, -20, 13.5, 0.85876, -24.5, -24.5, 0.85876, -24.5, -24.5, 0.85876, -20, 15.5, 0.85876, -20, 16.25, 0.85876, -19.25, 24.5, 0.85876, -24.5, 16.25, 0.85876, 1.25, 15.75, 0.85876, 1.75, 24.5, 0.85876, 1.75, 15, 0.85876, 9, 15, 0.85876, 1.75, 14, 0.85876, 1.5, 4.75, 0.85876, 9, -24.5, 0.85876, 6.75, -14, 0.85876, 6.75, -14, 0.85876, 4.75, -24.5, 0.85876, -17.75, -12, 0.85876, 4.5, -11.75, 0.85876, 10, 4.5, 0.85876, 10, 14, 0.85876, -17.75, 24.5, 0.85876, 9, -24.5, 0.85876, 24.5, -14, 0.85876, 24.5, 6, 0.85876, 24.5, 6.25, 0.85876, 11.25, 4.75, 0.85876, 11.25, -11.75, 0.85876, 24.5, 24.5, 0.85876, 24.5, 24.5, 0.85876, 11.25)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(4, 0, 1), PackedInt32Array(4, 1, 5), PackedInt32Array(5, 1, 6), PackedInt32Array(9, 8, 7), PackedInt32Array(7, 5, 9), PackedInt32Array(9, 5, 6), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(18, 16, 17), PackedInt32Array(20, 19, 13), PackedInt32Array(13, 19, 18), PackedInt32Array(13, 18, 12), PackedInt32Array(12, 18, 21), PackedInt32Array(21, 18, 17), PackedInt32Array(10, 11, 8), PackedInt32Array(9, 22, 8), PackedInt32Array(8, 22, 10), PackedInt32Array(24, 23, 15), PackedInt32Array(15, 23, 14), PackedInt32Array(27, 26, 25), PackedInt32Array(27, 25, 20), PackedInt32Array(20, 25, 19), PackedInt32Array(19, 25, 28), PackedInt32Array(30, 29, 26), PackedInt32Array(26, 29, 25)]
-agent_max_slope = 75.42
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0llon"]
 size = Vector3(50, 1, 50)
@@ -34,29 +46,57 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_7ffnx"]
 size = Vector3(20, 5, 1)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8b0gh"]
-
-[sub_resource type="Sky" id="Sky_ds2uo"]
-sky_material = SubResource("ProceduralSkyMaterial_8b0gh")
-
-[sub_resource type="Environment" id="Environment_2q8mi"]
-background_mode = 2
-sky = SubResource("Sky_ds2uo")
-
 [node name="PathingTest" type="Node3D"]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
-navigation_mesh = SubResource("NavigationMesh_ds2uo")
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -33.559, 18.6943, 55.6263)
+environment = SubResource("Environment_2q8mi")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+[node name="3DCursorComponent" parent="Camera3D" node_paths=PackedStringArray("camera") instance=ExtResource("3_xbwfa")]
+left_click_position_sent = ExtResource("2_2dkkv")
+right_click_position_sent = ExtResource("3_rnrpv")
+camera = NodePath("..")
+
+[node name="DirectionAttractorComponent" parent="Camera3D" instance=ExtResource("4_ibumx")]
+left_click_position_sent = ExtResource("2_2dkkv")
+
+[node name="DirectionRejectorComponent" parent="Camera3D" instance=ExtResource("5_duyih")]
+right_click_position_sent = ExtResource("3_rnrpv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="MouseTargetComponent" parent="." instance=ExtResource("3_2q8mi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.1833, 0, 22.9234)
+
+[node name="MeshInstance3D" parent="MouseTargetComponent" index="0"]
+visible = false
+
+[node name="ij_Cuberry" parent="MouseTargetComponent" instance=ExtResource("5_7ffnx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="SimpleNPC" parent="." node_paths=PackedStringArray("target_component") instance=ExtResource("2_ds2uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 1.17559, 22)
+target_component = NodePath("../MouseTargetComponent")
+
+[node name="tent-canvas" parent="." instance=ExtResource("7_8kmm4")]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -45, 1, 38)
+
+[node name="CampFire" parent="." instance=ExtResource("8_7ffnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 40)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, 22)
+navigation_mesh = SubResource("NavigationMesh_ibumx")
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
 collision_layer = 3
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Floor"]
 shape = SubResource("BoxShape3D_0llon")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Floor"]
 material_override = SubResource("StandardMaterial3D_4m1a8")
 mesh = SubResource("BoxMesh_xbwfa")
 
@@ -122,34 +162,5 @@ shape = SubResource("BoxShape3D_2q8mi")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Walls/Wall6"]
 material_override = SubResource("StandardMaterial3D_8kmm4")
 mesh = SubResource("BoxMesh_7ffnx")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15.6569, 32.6569)
-environment = SubResource("Environment_2q8mi")
-
-[node name="3DCursorComponent" parent="Camera3D" node_paths=PackedStringArray("camera") instance=ExtResource("3_xbwfa")]
-camera = NodePath("..")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-
-[node name="MouseTargetComponent" parent="." instance=ExtResource("3_2q8mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.212, 0, 16.524)
-
-[node name="MeshInstance3D" parent="MouseTargetComponent" index="0"]
-visible = false
-
-[node name="ij_Cuberry" parent="MouseTargetComponent" instance=ExtResource("5_7ffnx")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-
-[node name="SimpleNPC" parent="." node_paths=PackedStringArray("target_component") instance=ExtResource("2_ds2uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.17559, -1)
-target_component = NodePath("../MouseTargetComponent")
-
-[node name="tent-canvas" parent="." instance=ExtResource("7_8kmm4")]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 20, 1, 15)
-
-[node name="CampFire" parent="." instance=ExtResource("8_7ffnx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 17)
 
 [editable path="MouseTargetComponent"]

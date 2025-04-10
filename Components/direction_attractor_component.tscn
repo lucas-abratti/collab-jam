@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://e0g8viro2no7"]
+
+[ext_resource type="Script" uid="uid://dci3w6hc5y0pj" path="res://Components/direction_attractor_component.gd" id="1_58is8"]
+
+[node name="DirectionAttractorComponent" type="Node"]
+script = ExtResource("1_58is8")

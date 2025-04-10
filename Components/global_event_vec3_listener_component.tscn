@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxucdir1l5bri"]
+
+[ext_resource type="Script" uid="uid://hrpkps8xpepq" path="res://Components/global_event_vec3_listener_component.gd" id="1_18xgv"]
+
+[node name="GlogalEventVec3ListenerComponent" type="Node"]
+script = ExtResource("1_18xgv")

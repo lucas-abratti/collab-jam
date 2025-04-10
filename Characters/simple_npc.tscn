@@ -1,13 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://drhtniwfk48uo"]
+[gd_scene load_steps=20 format=3 uid="uid://drhtniwfk48uo"]
 
 [ext_resource type="Texture2D" uid="uid://h0wpp4wsowpd" path="res://Assets/3D/Textures/red_08.png" id="1_f75jd"]
 [ext_resource type="Script" uid="uid://uavhegfrcj52" path="res://Characters/simple_npc.gd" id="1_vhjqn"]
 [ext_resource type="PackedScene" uid="uid://cotpr3i7p4il1" path="res://Components/npc_brain_component.tscn" id="2_ovsrb"]
 [ext_resource type="PackedScene" uid="uid://clwxeycewuht2" path="res://Components/target_follow_component.tscn" id="3_8aw5m"]
+[ext_resource type="PackedScene" uid="uid://c6uvxwnqp2hyv" path="res://Components/navigator_component.tscn" id="3_ps2lm"]
 [ext_resource type="PackedScene" uid="uid://1ne5ws6c61v2" path="res://Components/interaction_scanner_component.tscn" id="4_7xisi"]
 [ext_resource type="PackedScene" uid="uid://burq6ari61p54" path="res://Assets/3D/InheritedScenes/figurine.tscn" id="5_ovsrb"]
 [ext_resource type="PackedScene" uid="uid://cyhja5h2wnh7n" path="res://Assets/3D/InheritedScenes/fish.tscn" id="7_iaypd"]
 [ext_resource type="PackedScene" uid="uid://bryvc1va1ij6n" path="res://Assets/3D/3DModels/ij_Cuberry.glb" id="8_tndde"]
+
+[sub_resource type="Curve" id="Curve_luosn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vhjqn"]
 
@@ -39,9 +44,15 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.212273, 0, 1, Vector2(0.678723, 0.144074), 0.0, 0.0, 0, 0, Vector2(0.73617, 0.64756), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.33586, 0.0, 1, 0]
 point_count = 4
 
-[node name="SimpleNPC" type="CharacterBody3D" node_paths=PackedStringArray("npc_brain_component", "animation_player", "target_follow_component", "food", "ai", "current_action", "distance_to_target_sensor", "exhaustion_sensor", "hunger_sensor", "food_sensor")]
+[sub_resource type="Curve" id="Curve_wgg4l"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[node name="SimpleNPC" type="CharacterBody3D" node_paths=PackedStringArray("target_component", "npc_brain_component", "navigator_component", "animation_player", "target_follow_component", "food", "ai", "current_action", "distance_to_target_sensor", "exhaustion_sensor", "hunger_sensor", "food_sensor")]
 script = ExtResource("1_vhjqn")
+target_component = NodePath("TargetFollowComponent/TargetComponent")
 npc_brain_component = NodePath("NPCBrainComponent")
+navigator_component = NodePath("NavigatorComponent")
 animation_player = NodePath("figurine/AnimationPlayer")
 target_follow_component = NodePath("TargetFollowComponent")
 food = NodePath("figurine/figurine/root/torso/arm-right/ij_Cuberry")
@@ -59,6 +70,9 @@ process_mode = 4
 target_follow_component = NodePath("../TargetFollowComponent")
 interaction_scanner_component = NodePath("../InteractionScannerComponent")
 
+[node name="NavigatorComponent" parent="." instance=ExtResource("3_ps2lm")]
+decay_curve = SubResource("Curve_luosn")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_vhjqn")
@@ -71,9 +85,6 @@ mesh = SubResource("CapsuleMesh_cnq6y")
 
 [node name="TargetFollowComponent" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_8aw5m")]
 character = NodePath("..")
-
-[node name="MeshInstance3D" parent="TargetFollowComponent/TargetComponent" index="0"]
-visible = false
 
 [node name="ij_Cuberry" parent="TargetFollowComponent/TargetComponent" index="1" instance=ExtResource("8_tndde")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
@@ -93,7 +104,6 @@ visible = false
 [node name="UtilityAIAgent" type="UtilityAIAgent" parent="."]
 
 [node name="DistanceToTargetSensor" type="UtilityAISensor" parent="UtilityAIAgent"]
-sensor_value = 1.79
 
 [node name="ExhaustionSensor" type="UtilityAISensor" parent="UtilityAIAgent"]
 
@@ -101,8 +111,10 @@ sensor_value = 1.79
 
 [node name="FoodSensor" type="UtilityAISensor" parent="UtilityAIAgent"]
 
+[node name="IdleSensor" type="UtilityAISensor" parent="UtilityAIAgent"]
+sensor_value = 0.6
+
 [node name="GoToTarget" type="UtilityAIBehaviour" parent="UtilityAIAgent"]
-cooldown_seconds = 1.0
 
 [node name="AmIFarAwayFromTarget" type="UtilityAIConsideration" parent="UtilityAIAgent/GoToTarget" node_paths=PackedStringArray("input_sensor")]
 input_sensor = NodePath("../../DistanceToTargetSensor")
@@ -116,6 +128,7 @@ activation_curve = SubResource("Curve_ps2lm")
 
 [node name="Interact" type="UtilityAIBehaviour" parent="UtilityAIAgent"]
 cooldown_seconds = 1.0
+is_active = false
 
 [node name="AmINearTheTarget" type="UtilityAIConsideration" parent="UtilityAIAgent/Interact" node_paths=PackedStringArray("input_sensor")]
 input_sensor = NodePath("../../DistanceToTargetSensor")
@@ -144,6 +157,10 @@ activation_curve = SubResource("Curve_sr0gk")
 [node name="Idle" type="UtilityAIBehaviour" parent="UtilityAIAgent"]
 
 [node name="Idle" type="UtilityAIAction" parent="UtilityAIAgent/Idle"]
+
+[node name="IdleStrength" type="UtilityAIConsideration" parent="UtilityAIAgent/Idle" node_paths=PackedStringArray("input_sensor")]
+input_sensor = NodePath("../../IdleSensor")
+activation_curve = SubResource("Curve_wgg4l")
 
 [editable path="TargetFollowComponent"]
 [editable path="TargetFollowComponent/TargetComponent"]

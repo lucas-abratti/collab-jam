@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6uvxwnqp2hyv"]
+
+[ext_resource type="Script" uid="uid://bhd1a6iocdbof" path="res://Components/navigator_component.gd" id="1_tmuy7"]
+[ext_resource type="PackedScene" uid="uid://dxucdir1l5bri" path="res://Components/global_event_vec3_listener_component.tscn" id="2_42uxx"]
+[ext_resource type="Resource" uid="uid://dpw7sbfx2mjro" path="res://Components/GlobalEvents/left_click_position_sent.tres" id="3_12vk8"]
+[ext_resource type="Resource" uid="uid://bjstlcpyjgucf" path="res://Components/GlobalEvents/right_click_position_sent.tres" id="4_d0181"]
+
+[node name="NavigatorComponent" type="Node"]
+script = ExtResource("1_tmuy7")
+
+[node name="GlogalEventVec3ListenerComponent2" parent="." instance=ExtResource("2_42uxx")]
+global_event = ExtResource("3_12vk8")
+
+[node name="GlogalEventVec3ListenerComponent" parent="." instance=ExtResource("2_42uxx")]
+global_event = ExtResource("4_d0181")
+
+[connection signal="global_event_recieved" from="GlogalEventVec3ListenerComponent2" to="." method="add_attractor"]
+[connection signal="global_event_recieved" from="GlogalEventVec3ListenerComponent" to="." method="add_repulsor"]

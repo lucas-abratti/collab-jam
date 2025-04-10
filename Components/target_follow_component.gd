@@ -24,7 +24,7 @@ var current_velocity: Vector3
 
 func _ready() -> void:
 	navigation_agent_3d.target_position = global_position
-	mouse_position_sent.global_signal.connect(on_mouse_position_sent)
+	#mouse_position_sent.global_signal.connect(on_mouse_position_sent)
 	if (mouse_target != null): 
 		current_target = mouse_target
 	else:
@@ -59,10 +59,10 @@ func set_current_target(new_target: TargetComponent) -> void:
 	target_reached = false
 	current_target.position_changed.emit()
 
-func on_mouse_position_sent(pos: Vector3) -> void:
-	target_reached = false
-	current_target = mouse_target
-	current_target.position_changed.emit()
+#func on_mouse_position_sent(pos: Vector3) -> void:
+	#target_reached = false
+	#current_target = mouse_target
+	#current_target.position_changed.emit()
 
 func go_to_random_position() -> void:
 	var range: int = 25
