@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dpvl1tkqdemde"
-path="res://.godot/imported/Level1-1.glb-a18cfae4833b3d23b412d5d759c752a3.scn"
+uid="uid://lmx1jek2nld8"
+path="res://.godot/imported/Draghi-Grass-00.glb-4fe6645dc981f25ba328b9a3c8b6159a.scn"
 
 [deps]
 
-source_file="res://Assets/3D/Terrain/Geometry/Level1-1.glb"
-dest_files=["res://.godot/imported/Level1-1.glb-a18cfae4833b3d23b412d5d759c752a3.scn"]
+source_file="res://Assets/3D/Terrain/Geometry/Draghi-Grass-00.glb"
+dest_files=["res://.godot/imported/Draghi-Grass-00.glb-4fe6645dc981f25ba328b9a3c8b6159a.scn"]
 
 [params]
 
@@ -32,6 +32,23 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"draghi_grass": {
+"use_external/enabled": true,
+"use_external/path": "uid://bb6npq2s1ifyh"
+}
+},
+"meshes": {
+"Draghi-Grass-00_draghi_grass_00": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 2,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": false,
+"save_to_file/path": ""
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

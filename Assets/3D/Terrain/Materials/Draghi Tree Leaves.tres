@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://d3l66mcw63xmh"]
+
+[ext_resource type="Texture2D" uid="uid://c52kacfwsgagr" path="res://Assets/3D/Textures/Trees/Draghi-Foliage-Gradients.png" id="1_1jelt"]
+[ext_resource type="Shader" uid="uid://bbu1vi7bhxr6v" path="res://Assets/3D/Terrain/Shaders/Draghi Tree.tres" id="1_smu0w"]
+[ext_resource type="Texture2D" uid="uid://b2m33loiukhk7" path="res://Assets/3D/Textures/Trees/Draghi-Foliage-Transparency.png" id="2_ucoeg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_smu0w")
+shader_parameter/Gradient_Map = ExtResource("1_1jelt")
+shader_parameter/Aplha_Map = ExtResource("2_ucoeg")
