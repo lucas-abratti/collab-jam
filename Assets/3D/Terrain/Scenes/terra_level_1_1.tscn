@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://y7kawurwcupl"]
+
+[ext_resource type="PackedScene" uid="uid://c0xvoqwel8bpn" path="res://Assets/3D/Terrain/Geometry/Draghi-Level1-1.glb" id="1_npdqr"]
+
+[node name="Terra-Level1-1" type="Node3D"]
+
+[node name="Draghi-Level1-1" parent="." instance=ExtResource("1_npdqr")]

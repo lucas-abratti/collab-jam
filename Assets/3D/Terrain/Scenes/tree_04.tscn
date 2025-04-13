@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpkpdmxklefkm"]
+
+[ext_resource type="PackedScene" uid="uid://swp5jrm7ges4" path="res://Assets/3D/Terrain/Geometry/Trees/Draghi-Tree04.glb" id="1_d45sn"]
+
+[node name="Tree-04" type="Node3D"]
+
+[node name="Draghi-Tree04" parent="." instance=ExtResource("1_d45sn")]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://1hhh14npsa6v"]
+
+[ext_resource type="ArrayMesh" uid="uid://4yiupkuy2g4j" path="res://Assets/3D/Terrain/Geometry/Meshes/draghi_grass_00.res" id="1_egaa0"]
+
+[node name="Grass00" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = ExtResource("1_egaa0")
