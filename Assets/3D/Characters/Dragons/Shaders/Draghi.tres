@@ -24,17 +24,17 @@ linked_parent_graph_frame = 17
 linked_parent_graph_frame = 18
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_j1ad1"]
-size = Vector2(112, 145)
+size = Vector2(112, 113)
 title = "Occlusion"
 attached_nodes = PackedInt32Array(13)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_mdpnb"]
-size = Vector2(112, 145)
+size = Vector2(123, 113)
 title = "Roughness"
 attached_nodes = PackedInt32Array(14)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_pt7sd"]
-size = Vector2(112, 145)
+size = Vector2(113, 113)
 title = "Metalness"
 attached_nodes = PackedInt32Array(15)
 
@@ -154,7 +154,7 @@ linked_parent_graph_frame = 4
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_schlick_ggx;
 
 uniform sampler2D Colour : source_color;
 uniform sampler2D Emission : source_color, hint_default_black;
@@ -226,7 +226,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-479.349, -218.08)
+modes/diffuse = 3
 nodes/vertex/2/node = SubResource("VisualShaderNodeFrame_5pcnq")
 nodes/vertex/2/position = Vector2(-280, 500)
 nodes/vertex/3/node = SubResource("VisualShaderNodeFrame_1h8pd")
@@ -239,10 +239,6 @@ nodes/vertex/6/node = SubResource("VisualShaderNodeVectorCompose_drm7k")
 nodes/vertex/6/position = Vector2(-240, -40)
 nodes/vertex/7/node = SubResource("VisualShaderNodeVectorCompose_qum82")
 nodes/vertex/7/position = Vector2(-240, 260)
-nodes/vertex/23/position = Vector2(0, 0)
-nodes/vertex/24/position = Vector2(0, 0)
-nodes/vertex/26/position = Vector2(0, 0)
-nodes/fragment/-1/position = Vector2(0, 0)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_nidvw")
 nodes/fragment/2/position = Vector2(-1000, -160)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_erc18")
@@ -262,17 +258,17 @@ nodes/fragment/11/position = Vector2(-1020, 940)
 nodes/fragment/12/node = SubResource("VisualShaderNodeTexture_nidvw")
 nodes/fragment/12/position = Vector2(-680, 940)
 nodes/fragment/13/node = SubResource("VisualShaderNodeReroute_erc18")
-nodes/fragment/13/position = Vector2(40, 920)
+nodes/fragment/13/position = Vector2(-340, 880)
 nodes/fragment/14/node = SubResource("VisualShaderNodeReroute_iloip")
-nodes/fragment/14/position = Vector2(40, 1080)
+nodes/fragment/14/position = Vector2(-340, 1040)
 nodes/fragment/15/node = SubResource("VisualShaderNodeReroute_07c3r")
-nodes/fragment/15/position = Vector2(40, 1240)
+nodes/fragment/15/position = Vector2(-340, 1200)
 nodes/fragment/16/node = SubResource("VisualShaderNodeFrame_j1ad1")
-nodes/fragment/16/position = Vector2(0, 880)
+nodes/fragment/16/position = Vector2(-380, 840)
 nodes/fragment/17/node = SubResource("VisualShaderNodeFrame_mdpnb")
-nodes/fragment/17/position = Vector2(0, 1040)
+nodes/fragment/17/position = Vector2(-380, 1000)
 nodes/fragment/18/node = SubResource("VisualShaderNodeFrame_pt7sd")
-nodes/fragment/18/position = Vector2(0, 1200)
+nodes/fragment/18/position = Vector2(-380, 1160)
 nodes/fragment/19/node = SubResource("VisualShaderNodeTexture2DParameter_1v5e1")
 nodes/fragment/19/position = Vector2(-2580, 2220)
 nodes/fragment/20/node = SubResource("VisualShaderNodeTexture_y0el5")
@@ -313,4 +309,4 @@ nodes/fragment/58/node = SubResource("VisualShaderNodeMix_pkgjp")
 nodes/fragment/58/position = Vector2(40, 300)
 nodes/fragment/60/node = SubResource("VisualShaderNodeReroute_nidvw")
 nodes/fragment/60/position = Vector2(-420, 340)
-nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 5, 2, 7, 0, 3, 0, 7, 0, 5, 0, 3, 0, 8, 0, 11, 0, 12, 2, 12, 1, 13, 0, 12, 2, 14, 0, 12, 3, 15, 0, 14, 0, 0, 3, 15, 0, 0, 2, 13, 0, 0, 6, 19, 0, 20, 2, 21, 0, 20, 0, 31, 0, 41, 0, 31, 1, 42, 0, 31, 2, 43, 0, 41, 0, 44, 0, 42, 0, 44, 1, 44, 0, 45, 0, 43, 0, 45, 1, 45, 0, 28, 0, 36, 0, 46, 0, 46, 0, 41, 1, 34, 0, 47, 0, 47, 0, 42, 1, 35, 0, 48, 0, 48, 0, 43, 1, 20, 0, 49, 0, 49, 0, 50, 0, 50, 0, 31, 0, 10, 0, 58, 2, 58, 0, 0, 5, 60, 0, 58, 1, 60, 0, 8, 1, 5, 0, 60, 0, 8, 0, 0, 0, 5, 4, 8, 2, 7, 0, 12, 0)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 5, 2, 7, 0, 3, 0, 7, 0, 5, 0, 3, 0, 8, 0, 11, 0, 12, 2, 12, 1, 13, 0, 12, 2, 14, 0, 12, 3, 15, 0, 15, 0, 0, 2, 13, 0, 0, 6, 19, 0, 20, 2, 21, 0, 20, 0, 31, 0, 41, 0, 31, 1, 42, 0, 31, 2, 43, 0, 41, 0, 44, 0, 42, 0, 44, 1, 44, 0, 45, 0, 43, 0, 45, 1, 45, 0, 28, 0, 36, 0, 46, 0, 46, 0, 41, 1, 34, 0, 47, 0, 47, 0, 42, 1, 35, 0, 48, 0, 48, 0, 43, 1, 20, 0, 49, 0, 49, 0, 50, 0, 50, 0, 31, 0, 10, 0, 58, 2, 58, 0, 0, 5, 60, 0, 58, 1, 60, 0, 8, 1, 5, 0, 60, 0, 8, 0, 0, 0, 5, 4, 8, 2, 7, 0, 12, 0, 14, 0, 0, 3)
