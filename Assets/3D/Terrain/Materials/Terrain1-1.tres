@@ -1,14 +1,26 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cjx836fkha4j6"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cjx836fkha4j6"]
 
 [ext_resource type="Shader" uid="uid://jnfeg00holqb" path="res://addons/flexible_toon_shader/flexible_toon.gdshader" id="1_d0jvi"]
+[ext_resource type="Shader" uid="uid://d7c77ys24yx5" path="res://Assets/3D/Terrain/Shaders/Fresnel.tres" id="1_spbwm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpod2"]
+render_priority = 0
+shader = ExtResource("1_spbwm")
+shader_parameter/Subtract_Y_Min = 0.727
+shader_parameter/Subtract_Y_Max = -9.1
+shader_parameter/Fresnel_Min = 0.853
+shader_parameter/Fresnel_Max = 0.893
+shader_parameter/Greater_Than = 0.959
+shader_parameter/Use_Greater_Than = true
 
 [resource]
 render_priority = 0
+next_pass = SubResource("ShaderMaterial_cpod2")
 shader = ExtResource("1_d0jvi")
-shader_parameter/albedo = Color(0.41801, 0.597655, 0.49213, 1)
+shader_parameter/albedo = Color(0, 1, 0.45, 1)
 shader_parameter/clamp_diffuse_to_max = false
 shader_parameter/cuts = 1
-shader_parameter/wrap = 9.5e-08
+shader_parameter/wrap = -0.211
 shader_parameter/steepness = 1.0
 shader_parameter/use_attenuation = true
 shader_parameter/use_specular = false
