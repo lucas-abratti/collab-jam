@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5flfvv7h1vja"]
+
+[ext_resource type="ArrayMesh" uid="uid://b12buf8vmjn6c" path="res://Assets/3D/Terrain/Geometry/Meshes/draghi_grass_01.res" id="1_pxpby"]
+
+[node name="Grass01" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = ExtResource("1_pxpby")

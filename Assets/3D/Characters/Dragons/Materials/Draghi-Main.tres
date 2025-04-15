@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dns80kai75nae"]
+
+[ext_resource type="Shader" uid="uid://bte2g5m61wyrb" path="res://Assets/3D/Characters/Dragons/Shaders/Draghi.tres" id="1_vx56s"]
+[ext_resource type="Texture2D" uid="uid://cxyaiu7t3ji8x" path="res://Assets/3D/Characters/Dragons/Textures/Draghi-Dragons_color.png" id="2_2ofj7"]
+[ext_resource type="Texture2D" uid="uid://dvf2gyiufmup" path="res://Assets/3D/Characters/Dragons/Textures/Draghi-Dragon_Draghi-Dragons_orm.png" id="3_csuwb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_88xqq"]
+load_path = "res://.godot/imported/Draghi-Dragon_Draghi-Dragons_emit.png-308ff8bf2848e4cfb98a0741eefda0da.s3tc.ctex"
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vx56s")
+shader_parameter/Colour = ExtResource("2_2ofj7")
+shader_parameter/Emission = SubResource("CompressedTexture2D_88xqq")
+shader_parameter/ORM_Map = ExtResource("3_csuwb")
+shader_parameter/Emission_Intensity = 2

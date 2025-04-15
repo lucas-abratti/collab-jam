@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dpvl1tkqdemde"
-path="res://.godot/imported/Level1-1.glb-a18cfae4833b3d23b412d5d759c752a3.scn"
+uid="uid://p36y3u45niri"
+path="res://.godot/imported/Draghi-Level1-1.fbx-af314a45ca00ca6475d48b0fe59e4728.scn"
 
 [deps]
 
-source_file="res://Assets/3D/Terrain/Geometry/Level1-1.glb"
-dest_files=["res://.godot/imported/Level1-1.glb-a18cfae4833b3d23b412d5d759c752a3.scn"]
+source_file="res://Assets/3D/Terrain/Geometry/Draghi-Level1-1.fbx"
+dest_files=["res://.godot/imported/Draghi-Level1-1.fbx-af314a45ca00ca6475d48b0fe59e4728.scn"]
 
 [params]
 
@@ -28,10 +28,23 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+_subresources={
+"materials": {
+"level1-1.terrain": {
+"use_external/enabled": true,
+"use_external/path": "uid://bkibp3gmv1xrp"
+}
+},
+"nodes": {
+"PATH:Plane_001": {
+"generate/physics": true
+}
+}
+}
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

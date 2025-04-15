@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dpvl1tkqdemde"
-path="res://.godot/imported/Level1-1.glb-a18cfae4833b3d23b412d5d759c752a3.scn"
+uid="uid://bvakrol3glpdy"
+path="res://.godot/imported/Draghi-Tree02.glb-29022163378b01abd6ab525162bf86f7.scn"
 
 [deps]
 
-source_file="res://Assets/3D/Terrain/Geometry/Level1-1.glb"
-dest_files=["res://.godot/imported/Level1-1.glb-a18cfae4833b3d23b412d5d759c752a3.scn"]
+source_file="res://Assets/3D/Terrain/Geometry/Trees/Draghi-Tree02.glb"
+dest_files=["res://.godot/imported/Draghi-Tree02.glb-29022163378b01abd6ab525162bf86f7.scn"]
 
 [params]
 
@@ -32,6 +32,17 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"draghi-tree_leaves": {
+"use_external/enabled": true,
+"use_external/path": "uid://d3l66mcw63xmh"
+},
+"draghi_nature": {
+"use_external/enabled": true,
+"use_external/path": "uid://y6jfktflknwh"
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -1,8 +1,61 @@
-[gd_scene load_steps=2 format=3 uid="uid://bfu35f0hxq7a"]
+[gd_scene load_steps=11 format=3 uid="uid://bfu35f0hxq7a"]
 
-[ext_resource type="PackedScene" uid="uid://1aa3hyv737mw" path="res://Assets/3D/Terrain/Geometry/Level1-1.glb" id="1_n0qsc"]
+[ext_resource type="PackedScene" uid="uid://dpvl1tkqdemde" path="res://Assets/3D/Terrain/Geometry/Level1-1.glb" id="1_n0qsc"]
+[ext_resource type="PackedScene" uid="uid://y7kawurwcupl" path="res://Assets/3D/Terrain/Scenes/terra_level_1_1.tscn" id="2_dilhk"]
+[ext_resource type="PackedScene" uid="uid://bc7kk76estr17" path="res://Assets/3D/Characters/Dragons/Scenes/dragon_base.tscn" id="3_0urlm"]
+[ext_resource type="PackedScene" uid="uid://dpw7tdsk4ipnm" path="res://Assets/3D/Terrain/Geometry/Trees/Draghi-Tree01.glb" id="4_77x7w"]
+[ext_resource type="PackedScene" uid="uid://bvakrol3glpdy" path="res://Assets/3D/Terrain/Geometry/Trees/Draghi-Tree02.glb" id="5_xoyoh"]
+[ext_resource type="PackedScene" uid="uid://gflv5v3xdp8v" path="res://Assets/3D/Terrain/Geometry/Trees/Draghi-Tree03.glb" id="6_f4pg2"]
+[ext_resource type="PackedScene" uid="uid://swp5jrm7ges4" path="res://Assets/3D/Terrain/Geometry/Trees/Draghi-Tree04.glb" id="7_62b6n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0urlm"]
+sky_top_color = Color(0.7, 0.825, 1, 1)
+sky_horizon_color = Color(0.8544, 0.868047, 0.89, 1)
+ground_bottom_color = Color(0.0896, 0.162587, 0.28, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+ground_curve = 0.0746427
+
+[sub_resource type="Sky" id="Sky_77x7w"]
+sky_material = SubResource("ProceduralSkyMaterial_0urlm")
+
+[sub_resource type="Environment" id="Environment_xoyoh"]
+background_mode = 2
+sky = SubResource("Sky_77x7w")
+tonemap_mode = 2
+tonemap_white = 4.6
+fog_light_color = Color(0.3726, 0.49427, 0.69, 1)
+fog_density = 0.0145
+fog_aerial_perspective = 1.0
 
 [node name="Level1-1" instance=ExtResource("1_n0qsc")]
 
-[node name="CollisionShape3D" parent="level1-1_terrain/StaticBody3D" index="0"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_xoyoh")
+
+[node name="level1-1_terrain" parent="." index="1"]
 visible = false
+
+[node name="Terra-Level1-1" parent="." index="2" instance=ExtResource("2_dilhk")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.709854, 0.704349, 0, -0.704349, 0.709854, -53.9044, 24.4446, 49.1536)
+keep_aspect = 0
+projection = 1
+fov = 47.7
+size = 72.3785
+
+[node name="Dragon-Base" parent="." index="4" instance=ExtResource("3_0urlm")]
+transform = Transform3D(0.161793, 0, 0.986825, 0, 1, 0, -0.986825, 0, 0.161793, -73, 0, 23)
+
+[node name="Draghi-Tree01" parent="." index="5" instance=ExtResource("4_77x7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.1152, 0.0963397, 20.5362)
+
+[node name="Draghi-Tree02" parent="." index="6" instance=ExtResource("5_xoyoh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.7154, 0.149423, 19.8637)
+
+[node name="Draghi-Tree03" parent="." index="7" instance=ExtResource("6_f4pg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.7117, 0.0845084, 19.4003)
+
+[node name="Draghi-Tree04" parent="." index="8" instance=ExtResource("7_62b6n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.3576, 0.265473, 17.8275)

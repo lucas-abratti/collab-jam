@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bb6npq2s1ifyh"]
+
+[ext_resource type="Shader" uid="uid://5yavgywn5aa3" path="res://Assets/3D/Terrain/Shaders/DraghiGrass.gdshader" id="1_wl1v2"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wl1v2")
+shader_parameter/color = Color(0.41801, 0.597655, 0.49213, 1)
+shader_parameter/color2 = Color(0.419608, 0.596078, 0.490196, 1)
+shader_parameter/noiseScale = 20.0
