@@ -13,7 +13,12 @@ func _ready() -> void:
 	viewport = camera.get_viewport()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
+	if (event is InputEventJoypadButton):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	elif (event is InputEventMouseMotion):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	if (Input.is_action_just_pressed("attract") || Input.is_action_just_pressed("reject")):
 		mouse_2d_pos = viewport.get_mouse_position()
 		var ray_origin: Vector3 = camera.project_ray_origin(mouse_2d_pos)
 		var ray_target: Vector3 = ray_origin + camera.project_ray_normal(mouse_2d_pos) * 2000
@@ -22,7 +27,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		var intersection:= space_state.intersect_ray(physics_ray_query_parameters3D)
 		if (intersection.has("position") && intersection["position"] != null):
 			mouse_position_sent.global_signal.emit(intersection["position"])
-			if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+			if (Input.is_action_just_pressed("attract")):
 				left_click_position_sent.global_signal.emit(intersection["position"])
-			elif (Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
+			elif (Input.is_action_just_pressed("reject")):
 				right_click_position_sent.global_signal.emit(intersection["position"])
+	

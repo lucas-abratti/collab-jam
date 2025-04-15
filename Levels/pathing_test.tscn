@@ -51,7 +51,7 @@ size = Vector3(20, 5, 1)
 [node name="PathingTest" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -33.559, 18.6943, 55.6263)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -8.559, 18.6943, 39.6263)
 environment = SubResource("Environment_2q8mi")
 
 [node name="AttractorRejectorManagerComponent" parent="Camera3D" instance=ExtResource("1_rnrpv")]
@@ -89,7 +89,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 40)
 visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, 22)
 navigation_mesh = SubResource("NavigationMesh_ibumx")
 
 [node name="Floor" type="StaticBody3D" parent="NavigationRegion3D"]
@@ -167,25 +166,19 @@ material_override = SubResource("StandardMaterial3D_8kmm4")
 mesh = SubResource("BoxMesh_7ffnx")
 
 [node name="Dragon" parent="." instance=ExtResource("13_ibumx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 1, 21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, -2)
 
 [node name="NavigatorComponentDragons" parent="Dragon" index="1"]
 collision_mask = 16
 
-[node name="TargetFollowComponent" parent="Dragon" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0817986)
-
 [node name="Dragon2" parent="." instance=ExtResource("13_ibumx")]
-transform = Transform3D(1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, -39, 1, 21)
+transform = Transform3D(1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, -11, 1, -2)
 
 [node name="InterestComponent" parent="Dragon2" index="2"]
 collision_layer = 16
 
-[node name="TargetFollowComponent" parent="Dragon2" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0817986)
-
 [node name="SimpleEnemy" parent="." instance=ExtResource("14_duyih")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 21)
 
 [editable path="MouseTargetComponent"]
 [editable path="Dragon"]

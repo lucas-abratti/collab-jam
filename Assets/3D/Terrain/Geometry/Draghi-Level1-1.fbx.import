@@ -41,7 +41,10 @@ _subresources={
 },
 "nodes": {
 "PATH:Plane_001": {
-"generate/physics": true
+"generate/navmesh": 1,
+"generate/physics": true,
+"physics/layer": 3,
+"physics/mask": 0
 }
 }
 }

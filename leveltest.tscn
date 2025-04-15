@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4fhmnmsqgv00"]
+
+[ext_resource type="PackedScene" uid="uid://p36y3u45niri" path="res://Assets/3D/Terrain/Geometry/Draghi-Level1-1.fbx" id="1_xo68o"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Draghi-Level1-1" parent="." instance=ExtResource("1_xo68o")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+
+[editable path="Draghi-Level1-1"]
