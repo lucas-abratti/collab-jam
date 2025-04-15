@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl85j5vtd4f47"]
+
+[ext_resource type="PackedScene" uid="uid://drhtniwfk48uo" path="res://Characters/simple_npc.tscn" id="1_p2dh8"]
+[ext_resource type="PackedScene" uid="uid://c6uvxwnqp2hyv" path="res://Components/navigator_component.tscn" id="2_5cigb"]
+[ext_resource type="PackedScene" uid="uid://e0g8viro2no7" path="res://Components/interest_component.tscn" id="2_x8vab"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5cigb"]
+radius = 3.0
+
+[sub_resource type="Curve" id="Curve_5cigb"]
+_data = [Vector2(0, 0), 0.0, 0.0990099, 0, 1, Vector2(1, 0.0990099), 0.0990099, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jb6qf"]
+radius = 1.0
+
+[node name="Dragon" node_paths=PackedStringArray("navigator_components") instance=ExtResource("1_p2dh8")]
+navigator_components = [NodePath("NavigatorComponent"), NodePath("NavigatorComponentDragons")]
+
+[node name="NavigatorComponentDragons" parent="." index="1" instance=ExtResource("2_5cigb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_mask = 8
+
+[node name="CollisionShape3D" parent="NavigatorComponentDragons" index="0"]
+shape = SubResource("CylinderShape3D_5cigb")
+debug_color = Color(0.943534, 6.83457e-06, 0.601195, 0.42)
+
+[node name="InterestComponent" parent="." index="2" instance=ExtResource("2_x8vab")]
+collision_layer = 8
+range = 1.0
+influence = -0.5
+duration = 0.0
+influence_degradation_curve = SubResource("Curve_5cigb")
+
+[node name="MeshInstance3D" parent="InterestComponent" index="0"]
+visible = false
+
+[node name="CollisionShape3D" parent="InterestComponent" index="1"]
+shape = SubResource("CylinderShape3D_jb6qf")
+debug_color = Color(0.701961, 1, 0, 1)
+
+[node name="TargetFollowComponent" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0817986)
+
+[editable path="NavigatorComponentDragons"]
+[editable path="InterestComponent"]
+[editable path="figurine"]

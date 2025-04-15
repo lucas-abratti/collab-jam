@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://jkvdyd4h3rx8"]
+
+[ext_resource type="PackedScene" uid="uid://burq6ari61p54" path="res://Assets/3D/InheritedScenes/figurine.tscn" id="1_6y30v"]
+[ext_resource type="Script" uid="uid://cchmhxf8q4s8q" path="res://Characters/simple_enemy.gd" id="1_ghufm"]
+[ext_resource type="Texture2D" uid="uid://dbxscwxfc2ova" path="res://Assets/3D/Textures/colormap.png" id="2_4ix70"]
+[ext_resource type="PackedScene" uid="uid://blmuxxeimmw4p" path="res://Components/3d_look_at_modifier.tscn" id="3_4ix70"]
+[ext_resource type="PackedScene" uid="uid://dwl1025tikny8" path="res://Components/dragon_detector_component.tscn" id="4_8437k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5mbdi"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8437k"]
+albedo_texture = ExtResource("2_4ix70")
+uv1_offset = Vector3(-4.16, 1.03, 0)
+
+[node name="SimpleEnemy" type="CharacterBody3D" node_paths=PackedStringArray("dragons_detector_component", "look_at_3d_modifier_component")]
+script = ExtResource("1_ghufm")
+dragons_detector_component = NodePath("DragonsDetectorComponent")
+look_at_3d_modifier_component = NodePath("LookAt3DModifierComponent")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CapsuleShape3D_5mbdi")
+
+[node name="figurine" parent="." instance=ExtResource("1_6y30v")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="leg-left" parent="figurine/figurine/root" index="0"]
+material_override = SubResource("StandardMaterial3D_8437k")
+
+[node name="leg-right" parent="figurine/figurine/root" index="1"]
+material_override = SubResource("StandardMaterial3D_8437k")
+
+[node name="torso" parent="figurine/figurine/root" index="2"]
+material_override = SubResource("StandardMaterial3D_8437k")
+
+[node name="arm-left" parent="figurine/figurine/root/torso" index="0"]
+material_override = SubResource("StandardMaterial3D_8437k")
+
+[node name="arm-right" parent="figurine/figurine/root/torso" index="1"]
+material_override = SubResource("StandardMaterial3D_8437k")
+
+[node name="head" parent="figurine/figurine/root/torso" index="2"]
+material_override = SubResource("StandardMaterial3D_8437k")
+
+[node name="MeshInstance3D" parent="figurine/figurine/root/torso/head" index="0"]
+transform = Transform3D(-0.2, 1.74846e-08, -1.52855e-16, 0, -8.74228e-09, -0.04, -1.74846e-08, -0.2, 1.74846e-09, 0, 0.239527, -3.57628e-07)
+
+[node name="LookAt3DModifierComponent" parent="." node_paths=PackedStringArray("object") instance=ExtResource("3_4ix70")]
+object = NodePath("../figurine/figurine/root/torso/head")
+
+[node name="DragonsDetectorComponent" parent="." instance=ExtResource("4_8437k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[editable path="figurine"]
+[editable path="DragonsDetectorComponent"]

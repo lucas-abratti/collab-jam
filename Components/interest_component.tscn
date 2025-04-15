@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://e0g8viro2no7"]
+
+[ext_resource type="Script" uid="uid://dci3w6hc5y0pj" path="res://Components/interest_component.gd" id="1_4hrdj"]
+
+[sub_resource type="Curve" id="Curve_4hrdj"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_58is8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4hrdj"]
+
+[node name="InterestComponent" type="Area3D" node_paths=PackedStringArray("collision_shape_3d")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_4hrdj")
+influence = 1.0
+duration = 5.0
+influence_degradation_curve = SubResource("Curve_4hrdj")
+collision_shape_3d = NodePath("CollisionShape3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_58is8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_4hrdj")

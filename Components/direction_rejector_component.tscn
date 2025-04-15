@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dicililuf3psk"]
+[gd_scene load_steps=3 format=3 uid="uid://dicililuf3psk"]
 
 [ext_resource type="Script" uid="uid://d2wtceesgq2xy" path="res://Components/direction_rejector_component.gd" id="1_a7qve"]
 
-[node name="DirectionRejectorComponent" type="Node"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_a7qve"]
+
+[node name="DirectionRejectorComponent" type="Node3D"]
 script = ExtResource("1_a7qve")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_a7qve")

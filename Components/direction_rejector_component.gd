@@ -1,5 +1,7 @@
-extends Node
+extends Node3D
 class_name DirectionRejectorComponent
 
 @export var duration: float = 1.0
-@export var right_click_position_sent: GlobalEventVector3
+
+func _ready() -> void:
+	get_tree().create_timer(duration).timeout.connect(queue_free)

@@ -1,17 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://b41an0cx1husp"]
+[gd_scene load_steps=25 format=3 uid="uid://b41an0cx1husp"]
 
 [ext_resource type="Texture2D" uid="uid://b43vk0vry6cuw" path="res://Assets/3D/Textures/green_10.png" id="1_8b0gh"]
+[ext_resource type="PackedScene" uid="uid://bar6rbh6sbkcw" path="res://Components/attractor_rejector_manager_component.tscn" id="1_rnrpv"]
 [ext_resource type="Texture2D" uid="uid://d13a6tc8t2gmv" path="res://Assets/3D/Textures/dark_08.png" id="2_0llon"]
 [ext_resource type="Resource" uid="uid://dpw7sbfx2mjro" path="res://Components/GlobalEvents/left_click_position_sent.tres" id="2_2dkkv"]
-[ext_resource type="PackedScene" uid="uid://drhtniwfk48uo" path="res://Characters/simple_npc.tscn" id="2_ds2uo"]
+[ext_resource type="PackedScene" uid="uid://e0g8viro2no7" path="res://Components/interest_component.tscn" id="2_ibumx"]
 [ext_resource type="PackedScene" uid="uid://b0k1n3x0u22jb" path="res://Components/mouse_target_component.tscn" id="3_2q8mi"]
 [ext_resource type="Resource" uid="uid://bjstlcpyjgucf" path="res://Components/GlobalEvents/right_click_position_sent.tres" id="3_rnrpv"]
 [ext_resource type="PackedScene" uid="uid://c106aasw50341" path="res://Components/3d_cursor_component.tscn" id="3_xbwfa"]
-[ext_resource type="PackedScene" uid="uid://e0g8viro2no7" path="res://Components/direction_attractor_component.tscn" id="4_ibumx"]
+[ext_resource type="PackedScene" uid="uid://bplawllppvc3a" path="res://Components/camera_panning_component.tscn" id="4_rnrpv"]
 [ext_resource type="PackedScene" uid="uid://bryvc1va1ij6n" path="res://Assets/3D/3DModels/ij_Cuberry.glb" id="5_7ffnx"]
-[ext_resource type="PackedScene" uid="uid://dicililuf3psk" path="res://Components/direction_rejector_component.tscn" id="5_duyih"]
 [ext_resource type="PackedScene" uid="uid://dskhtk2g1y5s8" path="res://Assets/3D/InheritedScenes/tent_canvas.tscn" id="7_8kmm4"]
 [ext_resource type="PackedScene" uid="uid://bwkg05lr0pwd7" path="res://Assets/3D/InheritedScenes/camp_fire.tscn" id="8_7ffnx"]
+[ext_resource type="PackedScene" uid="uid://dl85j5vtd4f47" path="res://Characters/dragon.tscn" id="13_ibumx"]
+[ext_resource type="PackedScene" uid="uid://jkvdyd4h3rx8" path="res://Characters/simple_enemy.tscn" id="14_duyih"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8b0gh"]
 
@@ -52,22 +54,25 @@ size = Vector3(20, 5, 1)
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -33.559, 18.6943, 55.6263)
 environment = SubResource("Environment_2q8mi")
 
+[node name="AttractorRejectorManagerComponent" parent="Camera3D" instance=ExtResource("1_rnrpv")]
+interest_component = ExtResource("2_ibumx")
+
 [node name="3DCursorComponent" parent="Camera3D" node_paths=PackedStringArray("camera") instance=ExtResource("3_xbwfa")]
 left_click_position_sent = ExtResource("2_2dkkv")
 right_click_position_sent = ExtResource("3_rnrpv")
 camera = NodePath("..")
 
-[node name="DirectionAttractorComponent" parent="Camera3D" instance=ExtResource("4_ibumx")]
-left_click_position_sent = ExtResource("2_2dkkv")
-
-[node name="DirectionRejectorComponent" parent="Camera3D" instance=ExtResource("5_duyih")]
-right_click_position_sent = ExtResource("3_rnrpv")
+[node name="CameraPanningComponent" parent="Camera3D" node_paths=PackedStringArray("camera") instance=ExtResource("4_rnrpv")]
+camera = NodePath("..")
+move_speed = 50.0
+lerp_speed = 20.0
+min_drag_threshold = 0.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 
 [node name="MouseTargetComponent" parent="." instance=ExtResource("3_2q8mi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.1833, 0, 22.9234)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.1833, 1, 22.9234)
 
 [node name="MeshInstance3D" parent="MouseTargetComponent" index="0"]
 visible = false
@@ -75,15 +80,13 @@ visible = false
 [node name="ij_Cuberry" parent="MouseTargetComponent" instance=ExtResource("5_7ffnx")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
-[node name="SimpleNPC" parent="." node_paths=PackedStringArray("target_component") instance=ExtResource("2_ds2uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 1.17559, 22)
-target_component = NodePath("../MouseTargetComponent")
-
 [node name="tent-canvas" parent="." instance=ExtResource("7_8kmm4")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -45, 1, 38)
+visible = false
 
 [node name="CampFire" parent="." instance=ExtResource("8_7ffnx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 40)
+visible = false
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, 22)
@@ -163,4 +166,33 @@ shape = SubResource("BoxShape3D_2q8mi")
 material_override = SubResource("StandardMaterial3D_8kmm4")
 mesh = SubResource("BoxMesh_7ffnx")
 
+[node name="Dragon" parent="." instance=ExtResource("13_ibumx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 1, 21)
+
+[node name="NavigatorComponentDragons" parent="Dragon" index="1"]
+collision_mask = 16
+
+[node name="TargetFollowComponent" parent="Dragon" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0817986)
+
+[node name="Dragon2" parent="." instance=ExtResource("13_ibumx")]
+transform = Transform3D(1, 0, 2.08616e-07, 0, 1, 0, -2.08616e-07, 0, 1, -39, 1, 21)
+
+[node name="InterestComponent" parent="Dragon2" index="2"]
+collision_layer = 16
+
+[node name="TargetFollowComponent" parent="Dragon2" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0817986)
+
+[node name="SimpleEnemy" parent="." instance=ExtResource("14_duyih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 26)
+
 [editable path="MouseTargetComponent"]
+[editable path="Dragon"]
+[editable path="Dragon/NavigatorComponentDragons"]
+[editable path="Dragon/InterestComponent"]
+[editable path="Dragon/figurine"]
+[editable path="Dragon2"]
+[editable path="Dragon2/NavigatorComponentDragons"]
+[editable path="Dragon2/InterestComponent"]
+[editable path="Dragon2/figurine"]

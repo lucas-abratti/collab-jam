@@ -3,7 +3,7 @@ class_name TargetFollowComponent
 
 @export_category("Components")
 @export var mouse_target: TargetComponent
-@export var random_target: TargetComponent
+@export var target: TargetComponent
 
 @export_category("Nodes")
 @export var character: CharacterBody3D
@@ -28,7 +28,7 @@ func _ready() -> void:
 	if (mouse_target != null): 
 		current_target = mouse_target
 	else:
-		current_target = random_target
+		current_target = target
 
 func update_position(delta: float) -> void:
 	if (target_reached): return
@@ -45,7 +45,7 @@ func update_position(delta: float) -> void:
 	character.rotation.y = lerp_angle(
 		character.rotation.y,
 		target_angle,
-		delta * 5.0
+		delta * 2.0
 	)
 
 func on_current_target_position_changed() -> void:
@@ -59,13 +59,8 @@ func set_current_target(new_target: TargetComponent) -> void:
 	target_reached = false
 	current_target.position_changed.emit()
 
-#func on_mouse_position_sent(pos: Vector3) -> void:
-	#target_reached = false
-	#current_target = mouse_target
-	#current_target.position_changed.emit()
-
 func go_to_random_position() -> void:
 	var range: int = 25
-	current_target = random_target
-	random_target.global_position = Vector3(randi() % range - randi() % range, 1, randi() % range - randi() % range)
-	random_target.position_changed.emit()
+	current_target = target
+	target.global_position = Vector3(randi() % range - randi() % range, 1, randi() % range - randi() % range)
+	target.position_changed.emit()

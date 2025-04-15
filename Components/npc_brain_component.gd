@@ -11,8 +11,8 @@ signal interacted
 
 var available_interactions: Array[InteractableComponent]
 
-func _ready() -> void:
-	interaction_scanner_component.interactable_found.connect(on_interactable_found)
+#func _ready() -> void:
+	#interaction_scanner_component.interactable_found.connect(on_interactable_found)
 
 func on_interactable_found(interactable: InteractableComponent) -> void:
 	available_interactions.append(interactable)

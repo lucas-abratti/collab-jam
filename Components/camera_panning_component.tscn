@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bplawllppvc3a"]
+
+[ext_resource type="Script" uid="uid://bjpnw1jqbvtdr" path="res://Components/camera_panning_component.gd" id="1_jvyry"]
+
+[node name="CameraPanningComponent" type="Node"]
+script = ExtResource("1_jvyry")

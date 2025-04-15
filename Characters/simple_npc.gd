@@ -1,9 +1,7 @@
 extends CharacterBody3D
 
 @export_category("Components")
-@export var target_component: TargetComponent
-@export var npc_brain_component: NPCBrainComponent
-@export var navigator_component: ForceFieldNavigator
+@export var navigator_components: Array[ForceFieldNavigator]
 
 @export_category("Nodes")
 @export var animation_player: AnimationPlayer
@@ -22,11 +20,10 @@ var exhaustion: float = 0.0
 @export var hunger: float = 0.5
 @export var available_food: float = 0
 
+var previous_target_dir
+
 func _ready() -> void:
 	animation_player.animation_finished.connect(on_animation_finished)
-	if (target_component != null):
-		target_follow_component.mouse_target = target_component
-		target_follow_component.set_current_target(target_component)
 	ai.action_changed.connect(_on_utility_ai_agent_action_changed)
 	current_action = null
 
@@ -38,6 +35,11 @@ func _process(delta: float) -> void:
 	# Sense
 	var vec_to_target = target_follow_component.current_target.global_position - global_position 
 	var distance = vec_to_target.length()
+	var target_dir: Vector3
+	for navigator in navigator_components:
+		target_dir += navigator.calculate_direction(global_position)
+	previous_target_dir = target_dir
+	target_follow_component.target.global_position = global_position + (target_dir * 5)
 	distance_to_target_sensor.sensor_value = distance / 10.0
 	exhaustion_sensor.sensor_value = exhaustion
 	hunger_sensor.sensor_value = hunger
@@ -54,8 +56,6 @@ func _process(delta: float) -> void:
 	if current_action.name == "Move":
 		exhaustion += 0.1 * delta
 		hunger += 0.1 * delta
-		var new_target_pos = navigator_component.calculate_direction(global_position) * delta * target_follow_component.speed
-		target_component.global_position = global_position + new_target_pos * 100
 		target_follow_component.update_position(delta)
 		animation_player.play("walk")
 		if distance <= 2.0:
@@ -79,9 +79,9 @@ func _process(delta: float) -> void:
 			current_action.is_finished = true
 
 func start_action(action_node: UtilityAIAction):
-	current_action = action_node
-	if (action_node != null):
+	if (action_node != null && current_action != action_node):
 		print("Starting action %s" % action_node.name)
+	current_action = action_node
 	if action_node.name == "Move":
 		pass
 	elif action_node.name == "Interact":
@@ -92,12 +92,9 @@ func start_action(action_node: UtilityAIAction):
 		pass
 
 func end_action(action_node: UtilityAIAction):
-	if (action_node != null):
-		print("Ending action %s" % action_node.name)
 	if action_node.name == "Move":
 		pass
 	elif action_node.name == "Interact":
-		target_follow_component.go_to_random_position()
 		pass
 	elif action_node.name == "Idle":
 		pass

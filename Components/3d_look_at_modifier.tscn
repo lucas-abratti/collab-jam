@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blmuxxeimmw4p"]
+
+[ext_resource type="Script" uid="uid://dfwk8jx6xu0o7" path="res://Components/3d_look_at_modifier.gd" id="1_y31rx"]
+
+[node name="LookAt3DModifierComponent" type="Node"]
+script = ExtResource("1_y31rx")
