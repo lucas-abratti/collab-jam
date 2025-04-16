@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bb6npq2s1ifyh"]
+
+[ext_resource type="Shader" uid="uid://bbpiwsg2kc5kw" path="res://Assets/3D/Terrain/Shaders/Draghi Terra.tres" id="1_x5o60"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_x5o60")
+shader_parameter/Color = Color(0.371067, 0.55, 0.2145, 1)
+shader_parameter/Toon_Edge = 1.0
