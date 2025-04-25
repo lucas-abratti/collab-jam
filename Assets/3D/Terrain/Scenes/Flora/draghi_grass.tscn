@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpvk8v0ucgene"]
+
+[ext_resource type="PackedScene" uid="uid://bsdvsbear0wdl" path="res://Assets/3D/Terrain/Geometry/Flora/Grass/Draghi-Grass.glb" id="1_k2aa0"]
+
+[node name="Draghi-Grass" type="Node3D"]
+
+[node name="Draghi-Grass" parent="." instance=ExtResource("1_k2aa0")]

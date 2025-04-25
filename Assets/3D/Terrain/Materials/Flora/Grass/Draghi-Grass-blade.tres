@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://gewaop32r071"]
+
+[ext_resource type="Shader" uid="uid://lgw6nbhlle56" path="res://Assets/3D/Terrain/Shaders/Draghi-Grass-blade.tres" id="1_ikhrv"]
+[ext_resource type="Texture2D" uid="uid://d1qherg76tf10" path="res://Assets/3D/Terrain/Textures/Flora/Grass/Draghi-Foliage-Grass.png" id="2_etb82"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ikhrv")
+shader_parameter/Wind_Time = 10.0
+shader_parameter/Wind_Min = 0.0
+shader_parameter/Wind_Max = 1.0
+shader_parameter/Wind_Shine_Min = 0.679
+shader_parameter/Wind_Shine_Max = 1.0
+shader_parameter/Color = Color(0.372549, 0.54902, 0.215686, 1)
+shader_parameter/Wind_Color = Color(0.554667, 0.64, 0.48, 1)
+shader_parameter/Texture2DParameter = ExtResource("2_etb82")

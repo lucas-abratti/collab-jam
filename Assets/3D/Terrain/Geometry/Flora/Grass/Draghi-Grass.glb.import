@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dpvl1tkqdemde"
-path="res://.godot/imported/Level1-1.glb-a18cfae4833b3d23b412d5d759c752a3.scn"
+uid="uid://bsdvsbear0wdl"
+path="res://.godot/imported/Draghi-Grass.glb-bba51ef01f3c491a88a980243b46a539.scn"
 
 [deps]
 
-source_file="res://Assets/3D/Terrain/Geometry/Level1-1.glb"
-dest_files=["res://.godot/imported/Level1-1.glb-a18cfae4833b3d23b412d5d759c752a3.scn"]
+source_file="res://Assets/3D/Terrain/Geometry/Flora/Grass/Draghi-Grass.glb"
+dest_files=["res://.godot/imported/Draghi-Grass.glb-bba51ef01f3c491a88a980243b46a539.scn"]
 
 [params]
 

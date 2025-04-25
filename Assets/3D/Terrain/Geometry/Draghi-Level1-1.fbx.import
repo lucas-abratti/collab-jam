@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://p36y3u45niri"
+uid="uid://de14wy4qpqcgk"
 path="res://.godot/imported/Draghi-Level1-1.fbx-af314a45ca00ca6475d48b0fe59e4728.scn"
 
 [deps]
@@ -32,19 +32,7 @@ animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"materials": {
-"level1-1.terrain": {
-"use_external/enabled": true,
-"use_external/path": "uid://bkibp3gmv1xrp"
-}
-},
-"nodes": {
-"PATH:Plane_001": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

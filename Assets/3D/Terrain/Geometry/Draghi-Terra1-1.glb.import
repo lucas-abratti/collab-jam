@@ -49,13 +49,17 @@ _subresources={
 },
 "meshes": {
 "Draghi-Terra1-1_Plane_0022": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Assets/3D/Terrain/Geometry/Meshes/Terra-Path.res"
+"save_to_file/path": "res://Assets/3D/Terrain/Geometry/Meshes/Terra-col-Path.res"
 }
 },
 "nodes": {
 "PATH:d-level-1-1-path": {
-"generate/navmesh": 2,
+"generate/navmesh": 1,
 "generate/physics": true
 }
 }

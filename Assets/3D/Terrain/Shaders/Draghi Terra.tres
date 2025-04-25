@@ -93,7 +93,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-42.249, 105.773)
 modes/depth_draw = 1
 modes/diffuse = 3
 modes/specular = 1

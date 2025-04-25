@@ -1,8 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfu35f0hxq7a"]
+[gd_scene load_steps=35 format=3 uid="uid://bfu35f0hxq7a"]
 
-[ext_resource type="PackedScene" uid="uid://dpvl1tkqdemde" path="res://Assets/3D/Terrain/Geometry/Level1-1.glb" id="1_n0qsc"]
 [ext_resource type="PackedScene" uid="uid://bc7kk76estr17" path="res://Assets/3D/Characters/Dragons/Scenes/dragon_base.tscn" id="3_0urlm"]
 [ext_resource type="PackedScene" uid="uid://dleikgkncv8gi" path="res://Assets/3D/Terrain/Scenes/terra_1_1.tscn" id="3_3mhv4"]
+[ext_resource type="Script" uid="uid://fwd7smwjky4x" path="res://addons/proton_scatter/src/scatter.gd" id="3_34erp"]
+[ext_resource type="Script" uid="uid://cshkx47xxixll" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="4_k2bse"]
+[ext_resource type="Script" uid="uid://jmrnkltls6iu" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="5_c7pbv"]
+[ext_resource type="Script" uid="uid://bcm6pmvj7m6a6" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="6_77l7m"]
+[ext_resource type="Script" uid="uid://v5uni51sfxfe" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="7_1rr3k"]
+[ext_resource type="Script" uid="uid://d0tf8w8f2smo5" path="res://addons/proton_scatter/src/modifiers/offset_scale.gd" id="8_hsj5a"]
+[ext_resource type="Script" uid="uid://di6m7xb7eyfwc" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="9_w38ni"]
+[ext_resource type="Script" uid="uid://dcnrm75ks03ow" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="10_uclwg"]
+[ext_resource type="Script" uid="uid://dkw3d2y6u18ng" path="res://addons/proton_scatter/src/scatter_item.gd" id="11_8x6gh"]
+[ext_resource type="Material" uid="uid://gewaop32r071" path="res://Assets/3D/Terrain/Materials/Flora/Grass/Draghi-Grass-blade.tres" id="12_442u8"]
+[ext_resource type="Script" uid="uid://bvdtc7b082or2" path="res://addons/proton_scatter/src/scatter_shape.gd" id="13_fxl23"]
+[ext_resource type="Script" uid="uid://b6uoakvwj4l8w" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="14_34erp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0urlm"]
 sky_top_color = Color(0.54, 0.731667, 1, 1)
@@ -25,10 +36,117 @@ fog_density = 0.001
 fog_height = -12.05
 fog_height_density = 0.0182
 
-[node name="Level1-1" instance=ExtResource("1_n0qsc")]
+[sub_resource type="Resource" id="Resource_p7b0h"]
+script = ExtResource("6_77l7m")
+amount = 2000
+enabled = true
+override_global_seed = true
+custom_seed = 0
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_2i07x"]
+script = ExtResource("7_1rr3k")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(5, 360, 5)
+scale = Vector3(0.5, 0.5, 0.5)
+enabled = true
+override_global_seed = true
+custom_seed = 3
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_g50tq"]
+script = ExtResource("8_hsj5a")
+operation = 1
+scale = Vector3(1.5, 0.8, 1.5)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_yegjp"]
+script = ExtResource("9_w38ni")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = false
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_d86m7"]
+script = ExtResource("10_uclwg")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = true
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_4qcx6"]
+script = ExtResource("4_k2bse")
+stack = Array[ExtResource("5_c7pbv")]([SubResource("Resource_p7b0h"), SubResource("Resource_2i07x"), SubResource("Resource_g50tq"), SubResource("Resource_yegjp"), SubResource("Resource_d86m7")])
+
+[sub_resource type="Resource" id="Resource_k2bse"]
+script = ExtResource("14_34erp")
+radius = 14.1036
+metadata/_custom_type_script = "uid://b6uoakvwj4l8w"
+
+[sub_resource type="Resource" id="Resource_c7pbv"]
+script = ExtResource("14_34erp")
+radius = 13.2931
+
+[sub_resource type="Resource" id="Resource_77l7m"]
+script = ExtResource("14_34erp")
+radius = 6.80432
+
+[sub_resource type="Resource" id="Resource_1rr3k"]
+script = ExtResource("14_34erp")
+radius = 9.93002
+
+[sub_resource type="Resource" id="Resource_hsj5a"]
+script = ExtResource("14_34erp")
+radius = 9.93002
+
+[sub_resource type="Resource" id="Resource_w38ni"]
+script = ExtResource("14_34erp")
+radius = 16.0624
+
+[sub_resource type="Resource" id="Resource_uclwg"]
+script = ExtResource("14_34erp")
+radius = 8.01343
+
+[sub_resource type="Resource" id="Resource_8x6gh"]
+script = ExtResource("14_34erp")
+radius = 8.15822
+
+[sub_resource type="Resource" id="Resource_442u8"]
+script = ExtResource("14_34erp")
+radius = 7.05056
+
+[sub_resource type="Resource" id="Resource_2hkqn"]
+script = ExtResource("14_34erp")
+radius = 4.85849
+
+[sub_resource type="Resource" id="Resource_34erp"]
+script = ExtResource("14_34erp")
+radius = 9.99342
+
+[node name="Level1-1"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
-transform = Transform3D(0.737222, 0.547879, -0.39539, 0.10556, 0.484614, 0.868335, 0.667354, -0.681893, 0.299434, 0, 10.9226, 16.3035)
+transform = Transform3D(0.756946, 0.0515018, -0.651445, 0.508724, 0.579265, 0.636908, 0.410161, -0.813511, 0.412272, 0, 10.9226, 16.3035)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
@@ -40,11 +158,97 @@ visible = false
 [node name="Camera3D" type="Camera3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.709854, 0.704349, 0, -0.704349, 0.709854, -50.72, 46.6481, 49.4109)
 keep_aspect = 0
-fov = 43.0
+fov = 38.4
 size = 72.3785
 
 [node name="Dragon-Base" parent="." index="4" instance=ExtResource("3_0urlm")]
 transform = Transform3D(0.161793, 0, 0.986825, 0, 1, 0, -0.986825, 0, 0.161793, -57.824, 13.931, 14.1815)
 
-[node name="Terra1-1" parent="." index="5" instance=ExtResource("3_3mhv4")]
+[node name="Grass Scatter" type="Node3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.96624, 6.30594, 23.0347)
+script = ExtResource("3_34erp")
+modifier_stack = SubResource("Resource_4qcx6")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://fwd7smwjky4x"
+
+[node name="ScatterItem" type="Node3D" parent="Grass Scatter" index="0"]
+script = ExtResource("11_8x6gh")
+source_scale_multiplier = 0.525
+source_ignore_scale = false
+override_material = ExtResource("12_442u8")
+override_cast_shadow = 0
+path = "uid://bpvk8v0ucgene"
+
+[node name="ScatterShape" type="Node3D" parent="Grass Scatter" index="1"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -44.9084, 9.14571, -9.27966)
+visible = false
+script = ExtResource("13_fxl23")
+shape = SubResource("Resource_k2bse")
+
+[node name="ScatterShape2" type="Node3D" parent="Grass Scatter" index="2"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -35.9845, 5.54189, -2.43022)
+visible = false
+script = ExtResource("13_fxl23")
+shape = SubResource("Resource_c7pbv")
+
+[node name="ScatterShape4" type="Node3D" parent="Grass Scatter" index="3"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -28.0043, 1.48421, 8.01358)
+visible = false
+script = ExtResource("13_fxl23")
+shape = SubResource("Resource_77l7m")
+
+[node name="ScatterShape3" type="Node3D" parent="Grass Scatter" index="4"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -1.22099, -0.456333, 5.35588)
+visible = false
+script = ExtResource("13_fxl23")
+shape = SubResource("Resource_1rr3k")
+
+[node name="ScatterShape7" type="Node3D" parent="Grass Scatter" index="5"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -14.2289, -0.456333, 10.212)
+visible = false
+script = ExtResource("13_fxl23")
+shape = SubResource("Resource_hsj5a")
+
+[node name="ScatterShape8" type="Node3D" parent="Grass Scatter" index="6"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -2.70619, -0.456333, -12.5873)
+visible = false
+script = ExtResource("13_fxl23")
+shape = SubResource("Resource_w38ni")
+
+[node name="ScatterShape9" type="Node3D" parent="Grass Scatter" index="7"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -23.6246, -0.456333, -15.8114)
+visible = false
+script = ExtResource("13_fxl23")
+shape = SubResource("Resource_uclwg")
+
+[node name="ScatterShape5" type="Node3D" parent="Grass Scatter" index="8"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -8.79301, 3.16339, -7.70895)
+visible = false
+script = ExtResource("13_fxl23")
+negative = true
+shape = SubResource("Resource_8x6gh")
+
+[node name="ScatterShape6" type="Node3D" parent="Grass Scatter" index="9"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -15.2147, 3.16339, -5.94121)
+visible = false
+script = ExtResource("13_fxl23")
+negative = true
+shape = SubResource("Resource_442u8")
+
+[node name="ScatterShape10" type="Node3D" parent="Grass Scatter" index="10"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -20.3635, 1.79252, 2.3807)
+visible = false
+script = ExtResource("13_fxl23")
+negative = true
+shape = SubResource("Resource_2hkqn")
+
+[node name="ScatterShape11" type="Node3D" parent="Grass Scatter" index="11"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -39.9167, 4.82273, -24.0873)
+visible = false
+script = ExtResource("13_fxl23")
+negative = true
+shape = SubResource("Resource_34erp")
+
+[node name="Terra1-1" parent="." index="6" instance=ExtResource("3_3mhv4")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)

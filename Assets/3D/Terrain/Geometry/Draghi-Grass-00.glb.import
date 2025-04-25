@@ -43,10 +43,15 @@ _subresources={
 "Draghi-Grass-00_draghi_grass_00": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
-"generate/shadow_meshes": 2,
+"generate/shadow_meshes": 1,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": false,
 "save_to_file/path": ""
+}
+},
+"nodes": {
+"PATH:draghi_grass_00": {
+"mesh_instance/cast_shadow": 0
 }
 }
 }
